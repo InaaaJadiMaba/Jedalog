@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="JedaLog adalah ruang curhat anonim untuk mahasiswa. Tanpa nama asli, tanpa dihakimi. Dibuka 24 jam, di sela jadwal kuliah, kerja, dan organisasi."/>
+  <meta name="keywords" content="curhat anonim, kesehatan mental mahasiswa, ruang curhat, refleksi diri, jedalog"/>
+  <meta property="og:title" content="JedaLog — Ruang Curhat Anonim untuk Mahasiswa"/>
+  <meta property="og:description" content="Jeda sebentar. Ceritakan yang kamu pendam. Tanpa nama asli, tanpa dihakimi."/>
+  <meta property="og:type" content="website"/>
+  <title>JedaLog — Ruang Curhat Anonim untuk Mahasiswa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/chat.css"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 38'><rect width='38' height='38' rx='10' fill='%237B55A8'/><path transform='translate(14,2) scale(0.95)' d='M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z' fill='%23A87EC8'/><circle cx='13' cy='20' r='11' fill='white'/><path d='M13,20 L13,10 A10,10 0 0,1 19.8,12.9 Z' fill='%237B55A8'/><path transform='translate(16,5) scale(0.72)' d='M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z' fill='%23F2C0D8'/></svg>"/>
+
+</head>
+<body>
+
+<!-- ====================== NAVBAR ====================== -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar-inner">
+    <a href="#beranda" data-page="beranda" class="logo" aria-label="JedaLog - Beranda">
+      <div class="logo-icon" aria-hidden="true">
+        <svg viewBox="0 0 52 36" height="36" xmlns="http://www.w3.org/2000/svg" style="width:auto;"><g transform="translate(18,1) scale(1.35)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#A87EC8"/></g><circle cx="16" cy="18" r="14" fill="white"/><path d="M16,18 L16,4 A14,14 0 0,1 23,5.9 Z" fill="#7B55A8"/><g transform="translate(22,5) scale(1.0)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#F2C0D8"/></g></svg>
+      </div>
+      JedaLog
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#beranda" data-page="beranda" id="nav-beranda">Beranda</a></li>
+      <li><a href="#tentang" data-page="tentang" id="nav-tentang">Tentang Kami</a></li>
+      <li><a href="#layanan" data-page="layanan" id="nav-layanan">Layanan</a></li>
+      <li><a href="#chat" data-page="chat" id="nav-chat">ChatAI</a></li>
+      <li><a href="#bantuan" data-page="bantuan" id="nav-bantuan">Bantuan</a></li>
+      <li><a href="#kontak" data-page="kontak" id="nav-kontak">Kontak</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Ganti tema">🌙</button>
+      <a href="#login" class="btn-login" id="navLoginBtn" data-auth-btn>Masuk</a>
+      <a href="#curhat" data-page="curhat" class="btn-primary" id="navCurhatBtn">Mulai Curhat →</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav" role="menu">
+    <a href="#beranda" data-page="beranda" role="menuitem">Beranda</a>
+    <a href="#tentang" data-page="tentang" role="menuitem">Tentang Kami</a>
+    <a href="#layanan" data-page="layanan" role="menuitem">Layanan</a>
+    <a href="#chat" data-page="chat" role="menuitem">Chat AI</a>
+    <a href="#bantuan" data-page="bantuan" role="menuitem">Bantuan</a>
+    <a href="#kontak" data-page="kontak" role="menuitem">Kontak</a>
+    <div class="mobile-nav-footer">
+      <a href="#login" class="btn-login btn-login-mobile" id="navLoginBtnMobile" data-auth-btn role="menuitem">Masuk</a>
+      <a href="#curhat" data-page="curhat" class="btn-primary" style="display:block;text-align:center;" role="menuitem">Mulai Curhat →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ====================== TOAST CONTAINER ====================== -->
+<div class="toast-container" id="toastContainer" role="alert" aria-live="polite"></div>
+
+<!-- ====================== PAGE: BERANDA ====================== -->
+<div class="page active" id="page-beranda">
+
+  <!-- Hero -->
+  <section class="hero-section" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <!-- Left col -->
+      <div class="hero-content">
+        <span class="page-label" aria-label="Kategori halaman">Ruang Curhat Anonim untuk Mahasiswa</span>
+        <h1 id="hero-title" class="hero-title">
+          Jeda Sebentar.<br>
+          Ceritakan yang<br>
+          <span class="accent">Kamu Pendam.</span>
+        </h1>
+        <p class="hero-desc">Tanpa nama asli dan tanpa dihakimi. Dibuka kapan saja, di sela jadwal kuliah, kerja, dan organisasi.</p>
+        <div class="hero-buttons">
+          <a href="#curhat" data-page="curhat" class="btn-primary" id="heroCurhatBtn">Mulai Curhat →</a>
+          <a href="#register" data-page="register" class="btn-secondary" id="heroDaftarBtn">Daftar Lebih Awal</a>
+        </div>
+      </div>
+
+      <!-- Right col: Illustration -->
+      <div class="hero-image">
+        <div class="illustration-wrapper" aria-hidden="true">
+          <!-- Decorative text -->
+          <div style="position:absolute;top:12px;right:12px;font-size:0.95rem;font-weight:700;color:var(--navy);line-height:1.35;text-align:right;opacity:0.75;font-style:italic;z-index:2;">
+            Kamu nggak<br>sendiri kok ♡
+          </div>
+          <!-- SVG Hero Illustration -->
+          <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+            <!-- BG clouds -->
+            <ellipse cx="340" cy="85" rx="130" ry="60" fill="#D6E4FF" opacity="0.75"/>
+            <ellipse cx="400" cy="78" rx="90" ry="45" fill="#E8F0FF" opacity="0.8"/>
+            <ellipse cx="275" cy="96" rx="80" ry="38" fill="#DAE8FF" opacity="0.65"/>
+            <circle cx="180" cy="65" r="38" fill="#E0ECFF" opacity="0.55"/>
+            <circle cx="218" cy="58" r="30" fill="#EAF2FF" opacity="0.5"/>
+            <!-- Deco dots -->
+            <circle cx="85" cy="42" r="7" fill="#BFCFFF" opacity="0.6"/>
+            <circle cx="100" cy="26" r="4.5" fill="#BFCFFF" opacity="0.5"/>
+            <circle cx="460" cy="52" r="9" fill="#A8BFFF" opacity="0.5"/>
+            <circle cx="478" cy="36" r="5.5" fill="#BFCFFF" opacity="0.4"/>
+            <!-- Doodle lines -->
+            <path d="M65 128 Q75 118 85 128" stroke="#A8BFFF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M58 120 Q68 110 78 120" stroke="#A8BFFF" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M460 168 Q472 156 484 168" stroke="#A8BFFF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <text x="455" y="118" font-size="13" fill="#6B8FD4" opacity="0.6">✦</text>
+            <text x="75" y="170" font-size="11" fill="#6B8FD4" opacity="0.5">✦</text>
+            <!-- Desk -->
+            <rect x="95" y="272" width="365" height="15" rx="7.5" fill="#C8D8F5"/>
+            <rect x="95" y="278" width="365" height="9" rx="4.5" fill="#B8CBF0"/>
+            <!-- Laptop -->
+            <rect x="148" y="208" width="170" height="106" rx="9" fill="#2A3F70"/>
+            <rect x="153" y="213" width="160" height="96" rx="7" fill="#1E3060"/>
+            <!-- Screen content -->
+            <rect x="160" y="222" width="120" height="6.5" rx="3" fill="#4A7DD9" opacity="0.55"/>
+            <rect x="160" y="234" width="92" height="4.5" rx="2" fill="#6B9AE0" opacity="0.45"/>
+            <rect x="160" y="244" width="105" height="4.5" rx="2" fill="#6B9AE0" opacity="0.35"/>
+            <!-- Chat bubble on screen -->
+            <rect x="172" y="256" width="66" height="34" rx="9" fill="#3164C8" opacity="0.65"/>
+            <path d="M193 290 L187 302 L201 290" fill="#3164C8" opacity="0.65"/>
+            <rect x="180" y="265" width="50" height="4.5" rx="2" fill="white" opacity="0.55"/>
+            <rect x="180" y="273" width="36" height="4.5" rx="2" fill="white" opacity="0.45"/>
+            <!-- Laptop base -->
+            <rect x="126" y="308" width="214" height="13" rx="6.5" fill="#2A3F70"/>
+            <rect x="210" y="314" width="44" height="7" rx="3.5" fill="#1E3060"/>
+            <!-- Books stack -->
+            <rect x="320" y="248" width="76" height="17" rx="4.5" fill="#3164C8"/>
+            <rect x="325" y="232" width="70" height="17" rx="4.5" fill="#4A7DD9"/>
+            <rect x="330" y="217" width="65" height="16" rx="4.5" fill="#102C68"/>
+            <line x1="340" y1="217" x2="340" y2="233" stroke="#EAF0FF" stroke-width="1.5" opacity="0.4"/>
+            <line x1="340" y1="232" x2="340" y2="249" stroke="#EAF0FF" stroke-width="1.5" opacity="0.4"/>
+            <line x1="340" y1="248" x2="340" y2="265" stroke="#EAF0FF" stroke-width="1.5" opacity="0.4"/>
+            <!-- Mug -->
+            <rect x="390" y="256" width="48" height="50" rx="11" fill="white" stroke="#D1DCF5" stroke-width="2.5"/>
+            <path d="M438 270 Q458 270 458 284 Q458 298 438 298" fill="none" stroke="#D1DCF5" stroke-width="3" stroke-linecap="round"/>
+            <rect x="402" y="272" width="24" height="18" rx="6" fill="#EAF0FF"/>
+            <path d="M410 290 L407 298 L416 290" fill="#EAF0FF"/>
+            <rect x="406" y="277" width="16" height="3" rx="1.5" fill="#3164C8" opacity="0.65"/>
+            <rect x="406" y="282" width="12" height="3" rx="1.5" fill="#3164C8" opacity="0.5"/>
+            <!-- Steam -->
+            <path d="M404 254 Q408 246 404 240" stroke="#D1DCF5" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+            <path d="M416 252 Q420 244 416 238" stroke="#D1DCF5" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+            <!-- Student hoodie body -->
+            <path d="M228 202 Q248 155 270 155 Q292 155 312 202 Q322 234 316 272 L222 272 Q216 234 228 202Z" fill="#1E3060"/>
+            <rect x="242" y="228" width="56" height="30" rx="9" fill="#162848"/>
+            <!-- Hood -->
+            <path d="M228 202 Q238 180 270 175 Q302 180 312 202" fill="#263D6B"/>
+            <!-- Neck -->
+            <rect x="260" y="150" width="20" height="23" rx="10" fill="#F5C5A0"/>
+            <!-- Head -->
+            <ellipse cx="270" cy="126" rx="47" ry="50" fill="#F5C5A0"/>
+            <!-- Hair -->
+            <path d="M223 110 Q228 78 270 72 Q312 78 317 110 Q312 88 270 84 Q228 88 223 110Z" fill="#1A1A2E"/>
+            <path d="M223 110 Q218 124 223 138" fill="#1A1A2E"/>
+            <path d="M317 110 Q322 124 317 140" fill="#1A1A2E"/>
+            <path d="M234 88 Q262 76 294 80 Q275 78 259 78 Q244 78 234 88Z" fill="#2A2A3E" opacity="0.5"/>
+            <!-- Eyes closed/peaceful -->
+            <path d="M250 123 Q257 117 264 123" stroke="#1A1A2E" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+            <path d="M276 123 Q283 117 290 123" stroke="#1A1A2E" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+            <!-- Smile -->
+            <path d="M258 138 Q270 147 282 138" stroke="#C08060" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <!-- Cheeks -->
+            <ellipse cx="250" cy="138" rx="10" ry="6.5" fill="#F4A0A0" opacity="0.38"/>
+            <ellipse cx="290" cy="138" rx="10" ry="6.5" fill="#F4A0A0" opacity="0.38"/>
+            <!-- Arms raised -->
+            <path d="M228 207 Q202 192 190 170 Q182 157 193 150 Q204 146 211 159 Q218 175 232 186" fill="#1E3060"/>
+            <path d="M312 207 Q338 192 350 170 Q358 157 347 150 Q336 146 329 159 Q322 175 308 186" fill="#1E3060"/>
+            <ellipse cx="193" cy="150" rx="17" ry="13" fill="#F5C5A0"/>
+            <ellipse cx="347" cy="150" rx="17" ry="13" fill="#F5C5A0"/>
+            <!-- Chair back -->
+            <rect x="190" y="274" width="160" height="85" rx="13" fill="#D1DCF5" opacity="0.5"/>
+            <rect x="203" y="281" width="134" height="70" rx="9" fill="#C0D0EE" opacity="0.4"/>
+            <!-- Small cloud deco -->
+            <ellipse cx="115" cy="210" rx="32" ry="19" fill="#D6E4FF" opacity="0.65"/>
+            <ellipse cx="135" cy="205" rx="24" ry="15" fill="#E0EBFF" opacity="0.55"/>
+            <!-- Hearts -->
+            <text x="64" y="210" font-size="15" fill="#A8C0FF" opacity="0.7">♡</text>
+            <text x="460" y="210" font-size="13" fill="#A8C0FF" opacity="0.65">♡</text>
+            <!-- Thought cloud -->
+            <circle cx="335" cy="52" r="13" fill="#C8D4EC" opacity="0.65"/>
+            <circle cx="349" cy="44" r="10" fill="#C8D4EC" opacity="0.65"/>
+            <circle cx="362" cy="38" r="17" fill="#C8D4EC" opacity="0.65"/>
+            <circle cx="380" cy="32" r="13" fill="#C8D4EC" opacity="0.65"/>
+            <path d="M348 62 Q356 76 350 80" stroke="#C8D4EC" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.65"/>
+            <!-- Spiral in thought -->
+            <path d="M360 42 Q364 36 370 39 Q374 45 368 50 Q362 53 359 47 Q356 41 362 38" fill="none" stroke="#A0B0D4" stroke-width="1.8" opacity="0.85"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Bar -->
+  <section class="features-bar" aria-label="Fitur Unggulan">
+    <div class="features-bar-inner">
+      <div class="feature-item">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
+            <line x1="1" y1="1" x2="23" y2="23"/>
+          </svg>
+        </div>
+        <div>
+          <div class="feature-title">Anonim</div>
+          <div class="feature-desc">Tidak perlu nama asli untuk bercerita</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div>
+          <div class="feature-title">Buka 24 Jam</div>
+          <div class="feature-desc">Lewat HP atau laptop, kapan saja</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="feature-title">Sesi Singkat</div>
+          <div class="feature-desc">Panduan refleksi sekitar 5 sampai 10 menit</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-section" aria-labelledby="how-title">
+    <div class="container">
+      <h2 id="how-title" class="section-title">Bagaimana Cara Kerjanya?</h2>
+      <p class="section-subtitle">Mudah, cepat, dan aman. Cukup dalam beberapa langkah.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number" aria-hidden="true">1</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <div class="step-title">Ceritakan Masalahmu</div>
+          <p class="step-desc">Tuliskan apa yang sedang membebani pikiranmu.</p>
+        </div>
+        <div class="step-arrow" aria-hidden="true">→</div>
+        <div class="step-card">
+          <div class="step-number" aria-hidden="true">2</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <div class="step-title">Ikuti Panduan Refleksi</div>
+          <p class="step-desc">Pilih topik dan dapatkan langkah kecil untuk mengatasi.</p>
+        </div>
+        <div class="step-arrow" aria-hidden="true">→</div>
+        <div class="step-card">
+          <div class="step-number" aria-hidden="true">3</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+              <line x1="9" y1="9" x2="9.01" y2="9"/>
+              <line x1="15" y1="9" x2="15.01" y2="9"/>
+            </svg>
+          </div>
+          <div class="step-title">Raih Ketenangan</div>
+          <p class="step-desc">Lakukan langkahnya dan rasakan perubahan positif.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" aria-label="Informasi Penting">
+    <div class="cta-grid">
+      <!-- Navy CTA -->
+      <div class="cta-navy">
+        <div class="cta-navy-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="26" r="18" fill="rgba(255,255,255,0.15)"/>
+            <path d="M22 32 Q32 44 42 32" fill="#FF6B6B" opacity="0.9"/>
+            <path d="M32 18 Q32 12 26 10 Q18 8 16 16 Q14 24 22 30 Q28 35 32 40 Q36 35 42 30 Q50 24 48 16 Q46 8 38 10 Q32 12 32 18Z" fill="#FF6B6B"/>
+            <circle cx="24" cy="46" r="4" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="40" cy="50" r="3" fill="rgba(255,255,255,0.15)"/>
+          </svg>
+        </div>
+        <div class="cta-navy-content">
+          <p class="cta-title">Jedalog adalah ruang curhat dan refleksi, bukan pengganti psikolog atau psikiater.</p>
+          <p class="cta-desc">Jika kamu merasa membutuhkan bantuan profesional, kami siap mengarahkan kamu.</p>
+          <a href="#bantuan" data-page="bantuan" class="btn-white btn-sm" id="ctaLayananBtn">Lihat layanan bantuan profesional →</a>
+        </div>
+      </div>
+      <!-- Blue CTA -->
+      <div class="cta-blue">
+        <div aria-hidden="true" style="flex-shrink:0;">
+          <svg viewBox="0 0 80 80" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="36" fill="#D6E4FF"/>
+            <path d="M20 55 L28 35 L60 28 L45 55Z" fill="#3164C8" opacity="0.8"/>
+            <path d="M28 35 L45 55 L42 42Z" fill="#102C68" opacity="0.5"/>
+            <circle cx="58" cy="26" r="5" fill="#3164C8" opacity="0.4"/>
+          </svg>
+        </div>
+        <div>
+          <p class="cta-title" style="color:var(--navy);font-size:1.15rem;margin-bottom:8px;">Butuh Bantuan Lebih?</p>
+          <p class="cta-desc" style="color:var(--text-gray);">Jika kamu merasa sangat berat, jangan ragu menghubungi layanan krisis atau profesional.</p>
+          <a href="#bantuan" data-page="bantuan" class="btn-primary btn-sm" id="ctaBantuanBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>
+            Lihat Rujukan Bantuan
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:14px;">
+            <div class="logo-icon" aria-hidden="true">
+              <svg viewBox="0 0 52 36" height="36" xmlns="http://www.w3.org/2000/svg" style="width:auto;"><g transform="translate(18,1) scale(1.35)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#A87EC8"/></g><circle cx="16" cy="18" r="14" fill="white"/><path d="M16,18 L16,4 A14,14 0 0,1 23,5.9 Z" fill="#7B55A8"/><g transform="translate(22,5) scale(1.0)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#F2C0D8"/></g></svg>
+            </div>
+            JedaLog
+          </div>
+          <p class="footer-desc">Ruang curhat anonim untuk mahasiswa. Tempat kamu berbagi pikiran, perasaan, dan keresahan tanpa takut dihakimi.</p>
+          <div class="social-links" aria-label="Media sosial">
+            <a href="#" class="social-btn" aria-label="Instagram JedaLog">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Twitter/X JedaLog">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="YouTube JedaLog">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.97A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Navigasi</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="#tentang" data-page="tentang">Tentang Kami</a></li>
+            <li><a href="#layanan" data-page="layanan">Layanan</a></li>
+            <li><a href="#bantuan" data-page="bantuan">Bantuan</a></li>
+            <li><a href="#kontak" data-page="kontak">Kontak</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Layanan</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="#curhat" data-page="curhat">Ruang Curhat</a></li><li><a href="#chat" data-page="chat">Chat AI</a></li>
+            <li><a href="#refleksi" data-page="refleksi">Panduan Refleksi</a></li>
+            <li><a href="#bantuan" data-page="bantuan">Rujukan Bantuan</a></li>
+            <li><a href="#login" data-page="login">Login</a></li>
+            <li><a href="#register" data-page="register">Daftar</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2024 JedaLog. Semua hak dilindungi.</p>
+        <p class="footer-love">Dibuat dengan <span>♥</span> untuk mahasiswa Indonesia</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ====================== PAGE: TENTANG KAMI ====================== -->
+<div class="page" id="page-tentang">
+
+  <!-- Hero -->
+  <section class="general-hero" aria-labelledby="tentang-title">
+    <div class="general-hero-inner">
+      <div>
+        <span class="page-label">Tentang Kami</span>
+        <h1 id="tentang-title" class="hero-title" style="font-size:clamp(2rem,4vw,3rem);">
+          JedaLog,<br>
+          Teman Ceritamu<br>
+          di Setiap Langkah
+        </h1>
+        <p class="hero-desc">JedaLog adalah ruang curhat anonim untuk mahasiswa, tempat kamu bisa berbagi pikiran, perasaan, dan keresahan tanpa takut dihakimi.</p>
+        <a href="#layanan" data-page="layanan" class="btn-primary" id="tentangLayananBtn">Kenapa JedaLog? →</a>
+      </div>
+      <div class="hero-image">
+        <svg viewBox="0 0 420 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;height:auto;" aria-hidden="true">
+          <!-- Background -->
+          <ellipse cx="210" cy="185" rx="180" ry="148" fill="#EAF0FF" opacity="0.5"/>
+          <!-- Decorative -->
+          <circle cx="62" cy="82" r="22" fill="#D6E4FF" opacity="0.6"/>
+          <circle cx="352" cy="72" r="17" fill="#D6E4FF" opacity="0.5"/>
+          <text x="46" y="65" font-size="18" fill="#A8C0FF" opacity="0.7">♡</text>
+          <text x="342" y="54" font-size="22" fill="#A8C0FF" opacity="0.6">♡</text>
+          <text x="322" y="205" font-size="14" fill="#A8C0FF" opacity="0.5">♡</text>
+          <text x="57" y="225" font-size="11" fill="#A8C0FF" opacity="0.5">✦</text>
+          <text x="360" y="155" font-size="11" fill="#A8C0FF" opacity="0.5">✦</text>
+          <!-- Decorative lines -->
+          <path d="M52 155 Q63 144 74 155" stroke="#A8BFFF" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <path d="M340 165 Q351 154 362 165" stroke="#A8BFFF" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <!-- Cloud (cute face) -->
+          <ellipse cx="256" cy="152" rx="66" ry="51" fill="white" filter="url(#cloudShadow)"/>
+          <ellipse cx="228" cy="135" rx="32" ry="30" fill="white"/>
+          <ellipse cx="280" cy="133" rx="30" ry="28" fill="white"/>
+          <defs><filter id="cloudShadow"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#D1DCF5" flood-opacity="0.5"/></filter></defs>
+          <!-- Cloud face -->
+          <ellipse cx="244" cy="152" rx="5.5" ry="6.5" fill="#2A3F70"/>
+          <ellipse cx="268" cy="152" rx="5.5" ry="6.5" fill="#2A3F70"/>
+          <ellipse cx="246" cy="150" rx="2" ry="2.5" fill="white"/>
+          <ellipse cx="270" cy="150" rx="2" ry="2.5" fill="white"/>
+          <path d="M246 165 Q256 174 266 165" stroke="#2A3F70" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <ellipse cx="234" cy="164" rx="8.5" ry="5.5" fill="#F4A0A0" opacity="0.42"/>
+          <ellipse cx="276" cy="164" rx="8.5" ry="5.5" fill="#F4A0A0" opacity="0.42"/>
+          <!-- Heart on cloud -->
+          <path d="M251 140 Q256 133 261 140 Q266 133 271 140 Q271 148 261 156 Q251 148 251 140Z" fill="#FFA0A0" opacity="0.75"/>
+          <!-- Student body -->
+          <path d="M168 238 Q175 193 192 188 Q208 183 224 194 Q238 183 252 183 Q264 183 268 194 Q276 194 292 205 Q303 216 298 246 L175 250Z" fill="#1E3060"/>
+          <rect x="202" y="214" width="50" height="26" rx="7.5" fill="#162848"/>
+          <!-- Neck -->
+          <rect x="217" y="166" width="19" height="24" rx="9.5" fill="#F5C5A0"/>
+          <!-- Head -->
+          <ellipse cx="226" cy="141" rx="44" ry="46" fill="#F5C5A0"/>
+          <!-- Hair -->
+          <path d="M182 125 Q186 94 226 88 Q266 94 270 125 Q266 104 226 100 Q186 104 182 125Z" fill="#1A1A2E"/>
+          <path d="M182 125 Q178 137 182 148" fill="#1A1A2E"/>
+          <path d="M270 125 Q274 137 270 148" fill="#1A1A2E"/>
+          <!-- Face: peaceful -->
+          <path d="M208 133 Q215 127 222 133" stroke="#1A1A2E" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          <path d="M230 133 Q237 127 244 133" stroke="#1A1A2E" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          <path d="M213 147 Q224 156 235 147" stroke="#C08060" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <ellipse cx="206" cy="145" rx="9.5" ry="6" fill="#F4A0A0" opacity="0.36"/>
+          <ellipse cx="245" cy="145" rx="9.5" ry="6" fill="#F4A0A0" opacity="0.36"/>
+          <!-- Arms hugging cloud -->
+          <path d="M175 245 Q164 218 168 197 Q172 183 183 188 Q187 197 192 208 Q203 224 202 238" fill="#1E3060"/>
+          <path d="M298 245 Q304 218 296 197 Q290 183 279 188 Q275 197 271 208 Q264 224 264 238" fill="#1E3060"/>
+          <ellipse cx="174" cy="196" rx="15" ry="11.5" fill="#F5C5A0"/>
+          <ellipse cx="288" cy="196" rx="15" ry="11.5" fill="#F5C5A0"/>
+          <!-- Floating hearts -->
+          <text x="92" y="134" font-size="20" fill="#FFB0B0" opacity="0.82">♡</text>
+          <text x="336" y="114" font-size="15" fill="#FFB0B0" opacity="0.72">♡</text>
+          <text x="107" y="205" font-size="11" fill="#B0C8FF" opacity="0.65">♡</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision Mission -->
+  <section class="section-padding" aria-labelledby="visi-misi-title">
+    <div class="container">
+      <div class="vision-mission">
+        <h2 id="visi-misi-title" class="vm-title">Visi &amp; Misi</h2>
+        <div class="vm-grid">
+          <div class="vm-card">
+            <div class="vm-card-header">
+              <div class="vm-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="3"/>
+                  <line x1="12" y1="2" x2="12" y2="5"/>
+                  <line x1="12" y1="19" x2="12" y2="22"/>
+                  <line x1="2" y1="12" x2="5" y2="12"/>
+                  <line x1="19" y1="12" x2="22" y2="12"/>
+                </svg>
+              </div>
+              <span class="vm-label">Visi</span>
+            </div>
+            <p class="vm-text">Menjadi platform kesehatan mental mahasiswa yang aman, mudah diakses, dan terpercaya di Indonesia.</p>
+          </div>
+          <div class="vm-card">
+            <div class="vm-card-header">
+              <div class="vm-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="2" x2="12" y2="6"/>
+                  <path d="M12 6a6 6 0 016 6c0 2.8-1.9 5.2-4.5 5.8"/>
+                  <path d="M12 6a6 6 0 00-6 6c0 2.8 1.9 5.2 4.5 5.8"/>
+                  <circle cx="12" cy="18" r="1"/>
+                </svg>
+              </div>
+              <span class="vm-label">Misi</span>
+            </div>
+            <p class="vm-text">Menyediakan ruang curhat anonim, mendukung refleksi diri, dan memberikan akses ke bantuan profesional bagi mahasiswa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (shared component) -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:14px;">
+            <div class="logo-icon"><svg viewBox="0 0 52 36" height="36" xmlns="http://www.w3.org/2000/svg" style="width:auto;"><g transform="translate(18,1) scale(1.35)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#A87EC8"/></g><circle cx="16" cy="18" r="14" fill="white"/><path d="M16,18 L16,4 A14,14 0 0,1 23,5.9 Z" fill="#7B55A8"/><g transform="translate(22,5) scale(1.0)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#F2C0D8"/></g></svg></div>
+            JedaLog
+          </div>
+          <p class="footer-desc">Ruang curhat anonim untuk mahasiswa Indonesia.</p>
+          <div class="social-links">
+            <a href="#" class="social-btn" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" class="social-btn" aria-label="Twitter/X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.97A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Navigasi</h3>
+          <ul class="footer-links">
+            <li><a href="#tentang" data-page="tentang">Tentang Kami</a></li>
+            <li><a href="#layanan" data-page="layanan">Layanan</a></li>
+            <li><a href="#bantuan" data-page="bantuan">Bantuan</a></li>
+            <li><a href="#kontak" data-page="kontak">Kontak</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Layanan</h3>
+          <ul class="footer-links">
+            <li><a href="#curhat" data-page="curhat">Ruang Curhat</a></li><li><a href="#chat" data-page="chat">Chat AI</a></li>
+            <li><a href="#refleksi" data-page="refleksi">Panduan Refleksi</a></li>
+            <li><a href="#bantuan" data-page="bantuan">Rujukan Bantuan</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2024 JedaLog. Semua hak dilindungi.</p>
+        <p class="footer-love">Dibuat dengan <span>♥</span> untuk mahasiswa Indonesia</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ====================== PAGE: LAYANAN ====================== -->
+<div class="page" id="page-layanan">
+
+  <!-- Hero -->
+  <section class="general-hero" aria-labelledby="layanan-title">
+    <div class="general-hero-inner">
+      <div>
+        <span class="page-label">Layanan</span>
+        <h1 id="layanan-title" class="hero-title" style="font-size:clamp(1.9rem,3.5vw,2.8rem);">
+          Layanan yang<br>Kami Sediakan
+        </h1>
+        <p class="hero-desc">JedaLog hadir dengan berbagai fitur untuk membantu kamu lebih tenang dan mengenal diri sendiri.</p>
+        <a href="#curhat" data-page="curhat" class="btn-primary" id="layananCurhatBtn">Mulai Sekarang →</a>
+      </div>
+      <div class="hero-image">
+        <!-- Laptop + plant illustration -->
+        <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;height:auto;" aria-hidden="true">
+          <circle cx="210" cy="160" r="148" fill="#EAF0FF" opacity="0.4"/>
+          <!-- Plant pot -->
+          <rect x="328" y="226" width="54" height="60" rx="8.5" fill="#8B6B4A"/>
+          <ellipse cx="355" cy="226" rx="27" ry="8.5" fill="#A0784E"/>
+          <path d="M355 226 Q340 194 318 184 Q334 190 350 206" fill="#5A9A5A"/>
+          <path d="M355 226 Q372 189 392 180 Q377 190 366 210" fill="#4A8A4A"/>
+          <path d="M355 226 Q346 198 330 192" fill="#6AAA6A" opacity="0.7"/>
+          <path d="M355 226 Q371 202 387 196" fill="#6AAA6A" opacity="0.7"/>
+          <!-- Laptop base -->
+          <rect x="64" y="186" width="292" height="14" rx="7" fill="#2A3F70"/>
+          <rect x="54" y="198" width="312" height="10" rx="5" fill="#1E3060"/>
+          <!-- Screen -->
+          <rect x="78" y="56" width="264" height="138" rx="10.5" fill="#2A3F70"/>
+          <rect x="84" y="62" width="252" height="128" rx="8" fill="#1A2C55"/>
+          <rect x="84" y="62" width="252" height="128" rx="8" fill="url(#lsGrad)" opacity="0.55"/>
+          <defs>
+            <linearGradient id="lsGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3164C8" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#102C68" stop-opacity="0.1"/>
+            </linearGradient>
+          </defs>
+          <!-- Screen top bar -->
+          <rect x="84" y="62" width="252" height="30" rx="8" fill="#102C68"/>
+          <circle cx="100" cy="77" r="5.5" fill="#FF6B6B" opacity="0.8"/>
+          <circle cx="115" cy="77" r="5.5" fill="#FFD93D" opacity="0.8"/>
+          <circle cx="130" cy="77" r="5.5" fill="#6BCB77" opacity="0.8"/>
+          <text x="176" y="81" font-size="9.5" fill="white" font-weight="bold" font-family="sans-serif">JedaLog</text>
+          <!-- Big chat icon centered -->
+          <rect x="178" y="96" width="64" height="52" rx="17" fill="#3164C8" opacity="0.9"/>
+          <path d="M224 148 L219 160 L232 148" fill="#3164C8" opacity="0.9"/>
+          <circle cx="193" cy="121" r="5.5" fill="white"/>
+          <circle cx="210" cy="121" r="5.5" fill="white"/>
+          <circle cx="227" cy="121" r="5.5" fill="white"/>
+          <!-- Small UI elements -->
+          <rect x="94" y="104" width="72" height="8" rx="4" fill="#3164C8" opacity="0.4"/>
+          <rect x="94" y="118" width="52" height="6" rx="3" fill="#4A7DD9" opacity="0.35"/>
+          <rect x="258" y="104" width="68" height="8" rx="4" fill="#3164C8" opacity="0.4"/>
+          <rect x="258" y="118" width="48" height="6" rx="3" fill="#4A7DD9" opacity="0.35"/>
+          <!-- Input bar on screen -->
+          <rect x="94" y="168" width="228" height="16" rx="8" fill="#EAF0FF" opacity="0.25"/>
+          <!-- Laptop hinge -->
+          <rect x="148" y="194" width="124" height="8" rx="4" fill="#344A7A"/>
+          <!-- Decorations -->
+          <text x="42" y="122" font-size="19" fill="#A8C0FF" opacity="0.5">♡</text>
+          <text x="48" y="170" font-size="12" fill="#6B8FD4" opacity="0.5">✦</text>
+          <path d="M32 162 Q43 151 54 162" stroke="#A8BFFF" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="section-padding" style="background:var(--bg-white);" aria-labelledby="services-title">
+    <div class="container">
+      <h2 id="services-title" class="section-title" style="margin-bottom:40px;">Fitur Utama</h2>
+      <div class="grid-3" style="margin-bottom:24px;">
+        <!-- Card 1: Ruang Curhat -->
+        <div class="card">
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+              </svg>
+            </div>
+            <div class="card-title">Ruang Curhat Anonim</div>
+            <p class="card-desc">Ceritakan pikiran dan perasaanmu tanpa perlu menyebut nama asli. Aman dan terjaga privasinya.</p>
+          </div>
+        </div>
+        <!-- Card 2: Panduan Refleksi -->
+        <div class="card">
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"/>
+                <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </div>
+            <div class="card-title">Panduan Refleksi</div>
+            <p class="card-desc">Ikuti panduan sederhana untuk memahami masalah dan menemukan solusi melalui refleksi diri.</p>
+          </div>
+        </div>
+        <!-- Card 3: Rujukan Bantuan -->
+        <div class="card">
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="card-title">Rujukan Bantuan</div>
+            <p class="card-desc">Akses informasi layanan psikolog dan bantuan profesional lainnya yang terverifikasi.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flexible Access Card -->
+      <div class="flexible-card">
+        <div class="flexible-left">
+          <div class="flex-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div>
+            <div style="font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:4px;">Akses Fleksibel</div>
+            <p style="font-size:0.86rem;color:var(--text-gray);">Buka kapan saja, di mana saja, lewat HP atau laptop.</p>
+          </div>
+        </div>
+        <a href="#curhat" data-page="curhat" class="btn-primary" id="flexibleCurhatBtn">Mulai Sekarang →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section on Layanan page -->
+  <section class="faq-section" aria-labelledby="faq-title-layanan">
+    <div class="container" style="max-width:800px;">
+      <h2 id="faq-title-layanan" class="section-title" style="margin-bottom:12px;">Pertanyaan yang Sering Ditanyakan</h2>
+      <p class="section-subtitle">Temukan jawaban atas pertanyaan umum tentang layanan JedaLog.</p>
+
+      <div class="accordion-item" id="faq1">
+        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">
+          <span class="accordion-title">Apakah identitas saya benar-benar aman?</span>
+          <div class="accordion-icon" aria-hidden="true">+</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">Ya, JedaLog dirancang untuk menjaga anonimitasmu. Kamu tidak perlu memasukkan nama asli atau informasi identitas apapun untuk mulai bercerita. Semua sesi bersifat anonim.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="faq2">
+        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">
+          <span class="accordion-title">Apakah JedaLog bisa menggantikan psikolog?</span>
+          <div class="accordion-icon" aria-hidden="true">+</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">Tidak. JedaLog adalah ruang curhat dan refleksi, bukan pengganti layanan psikolog atau psikiater profesional. Jika kamu merasa membutuhkan bantuan lebih lanjut, kami akan mengarahkanmu ke layanan profesional yang tepat.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="faq3">
+        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">
+          <span class="accordion-title">Berapa lama sesi panduan refleksi berlangsung?</span>
+          <div class="accordion-icon" aria-hidden="true">+</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">Sesi panduan refleksi dirancang untuk selesai dalam 5-10 menit, cocok untuk kamu yang punya waktu terbatas di sela jadwal kuliah atau aktivitas lainnya.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="faq4">
+        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">
+          <span class="accordion-title">Apakah JedaLog gratis?</span>
+          <div class="accordion-icon" aria-hidden="true">+</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">Ya, semua fitur dasar JedaLog dapat diakses secara gratis. Kami percaya bahwa kesehatan mental adalah hak setiap mahasiswa dan tidak seharusnya terhambat oleh biaya.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="faq5">
+        <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">
+          <span class="accordion-title">Apakah saya perlu membuat akun untuk mulai curhat?</span>
+          <div class="accordion-icon" aria-hidden="true">+</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">Kamu bisa langsung mencoba fitur curhat tanpa membuat akun. Namun, dengan mendaftar, kamu dapat menyimpan progres refleksimu dan mengakses fitur tambahan.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:14px;"><div class="logo-icon"><svg viewBox="0 0 52 36" height="36" xmlns="http://www.w3.org/2000/svg" style="width:auto;"><g transform="translate(18,1) scale(1.35)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#A87EC8"/></g><circle cx="16" cy="18" r="14" fill="white"/><path d="M16,18 L16,4 A14,14 0 0,1 23,5.9 Z" fill="#7B55A8"/><g transform="translate(22,5) scale(1.0)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#F2C0D8"/></g></svg></div>JedaLog</div>
+          <p class="footer-desc">Ruang curhat anonim untuk mahasiswa Indonesia.</p>
+          <div class="social-links"><a href="#" class="social-btn" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="#" class="social-btn" aria-label="Twitter/X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="#" class="social-btn" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.97A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a></div>
+        </div>
+        <div><h3 class="footer-col-title">Navigasi</h3><ul class="footer-links"><li><a href="#tentang" data-page="tentang">Tentang Kami</a></li><li><a href="#layanan" data-page="layanan">Layanan</a></li><li><a href="#bantuan" data-page="bantuan">Bantuan</a></li><li><a href="#kontak" data-page="kontak">Kontak</a></li></ul></div>
+        <div><h3 class="footer-col-title">Layanan</h3><ul class="footer-links"><li><a href="#curhat" data-page="curhat">Ruang Curhat</a></li><li><a href="#chat" data-page="chat">Chat AI</a></li><li><a href="#refleksi" data-page="refleksi">Panduan Refleksi</a></li><li><a href="#bantuan" data-page="bantuan">Rujukan Bantuan</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p class="footer-copy">© 2024 JedaLog. Semua hak dilindungi.</p><p class="footer-love">Dibuat dengan <span>♥</span> untuk mahasiswa Indonesia</p></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ====================== PAGE: BANTUAN ====================== -->
+<div class="page" id="page-bantuan">
+
+  <!-- Hero -->
+  <section class="general-hero" aria-labelledby="bantuan-title">
+    <div class="general-hero-inner">
+      <div>
+        <span class="page-label">Bantuan</span>
+        <h1 id="bantuan-title" class="hero-title" style="font-size:clamp(2rem,4vw,3rem);">Kamu Tidak Sendirian</h1>
+        <p class="hero-desc">Jika kamu sedang dalam kondisi yang sangat berat, berikut beberapa bantuan yang bisa kamu akses dengan aman dan terpercaya.</p>
+      </div>
+      <div class="hero-image">
+        <!-- Hands holding heart illustration -->
+        <svg viewBox="0 0 420 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;height:auto;" aria-hidden="true">
+          <ellipse cx="210" cy="185" rx="168" ry="115" fill="#EAF0FF" opacity="0.52"/>
+          <circle cx="62" cy="82" r="26" fill="#D6E4FF" opacity="0.5"/>
+          <circle cx="356" cy="72" r="21" fill="#D6E4FF" opacity="0.46"/>
+          <text x="46" y="64" font-size="19" fill="#A8C0FF" opacity="0.65">♡</text>
+          <text x="346" y="54" font-size="17" fill="#A8C0FF" opacity="0.62">♡</text>
+          <text x="57" y="204" font-size="13" fill="#A8C0FF" opacity="0.52">✦</text>
+          <text x="356" y="204" font-size="13" fill="#A8C0FF" opacity="0.52">✦</text>
+          <!-- Hearts floating -->
+          <text x="198" y="82" font-size="13" fill="#FFB0B0" opacity="0.72">♡</text>
+          <text x="160" y="103" font-size="11" fill="#FFB0B0" opacity="0.62">♡</text>
+          <text x="242" y="97" font-size="11" fill="#FFB0B0" opacity="0.62">♡</text>
+          <text x="132" y="134" font-size="11" fill="#6B8FD4" opacity="0.62">✦</text>
+          <text x="264" y="128" font-size="11" fill="#6B8FD4" opacity="0.62">✦</text>
+          <!-- Hands -->
+          <path d="M94 290 Q99 248 114 228 Q130 207 151 202 Q172 199 183 208 Q193 216 193 229 L182 260 L172 280 L162 290Z" fill="#F5C5A0"/>
+          <path d="M172 208 Q172 192 177 184 Q183 177 188 184 Q193 191 192 208" fill="#F5C5A0"/>
+          <path d="M157 206 Q154 190 159 182 Q165 175 172 182 Q177 190 175 206" fill="#F5C5A0"/>
+          <path d="M142 208 Q138 192 144 184 Q150 177 156 184 Q162 191 160 208" fill="#F5C5A0"/>
+          <path d="M326 290 Q321 248 306 228 Q290 207 269 202 Q248 199 237 208 Q227 216 227 229 L238 260 L248 280 L258 290Z" fill="#F5C5A0"/>
+          <path d="M248 208 Q248 192 243 184 Q237 177 232 184 Q227 191 228 208" fill="#F5C5A0"/>
+          <path d="M263 206 Q266 190 261 182 Q255 175 248 182 Q243 190 245 206" fill="#F5C5A0"/>
+          <path d="M278 208 Q282 192 276 184 Q270 177 264 184 Q258 191 260 208" fill="#F5C5A0"/>
+          <!-- Sleeves -->
+          <path d="M94 290 Q96 258 112 238 L151 232 L183 242 L183 272 L173 290Z" fill="#3164C8" opacity="0.28"/>
+          <path d="M326 290 Q324 258 308 238 L269 232 L237 242 L237 272 L247 290Z" fill="#3164C8" opacity="0.28"/>
+          <!-- Main heart -->
+          <path d="M210 150 Q210 119 184 108 Q155 97 147 123 Q138 150 162 174 Q184 195 210 218 Q236 195 258 174 Q282 150 273 123 Q264 97 236 108 Q210 119 210 150Z" fill="#FF6B6B"/>
+          <ellipse cx="182" cy="128" rx="15" ry="11" fill="white" opacity="0.26" transform="rotate(-22, 182, 128)"/>
+          <!-- Decorative blue dots -->
+          <circle cx="143" cy="84" r="6.5" fill="#6B9AE0" opacity="0.52"/>
+          <circle cx="270" cy="80" r="5.5" fill="#6B9AE0" opacity="0.47"/>
+          <circle cx="132" cy="170" r="4.5" fill="#A8C0FF" opacity="0.52"/>
+          <circle cx="278" cy="165" r="4.5" fill="#A8C0FF" opacity="0.52"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <section class="section-padding" style="background:var(--bg-white);">
+    <div class="container" style="max-width:960px;">
+
+      <!-- Emergency Alert -->
+      <div class="alert-banner alert-danger" role="alert">
+        <div class="alert-icon" aria-hidden="true">⚠️</div>
+        <p class="alert-text">Jika dalam keadaan darurat, segera hubungi:</p>
+        <a href="tel:119" class="alert-btn" aria-label="Hubungi Layanan Krisis 119 ext 8">
+          🆘 Layanan Krisis (119 ext. 8)
+        </a>
+      </div>
+
+      <!-- Professional Services -->
+      <h2 style="font-size:1.4rem;font-weight:800;color:var(--navy);margin-bottom:20px;">Layanan Profesional</h2>
+      <div class="grid-3">
+        <!-- Psikolog Kampus -->
+        <div class="pro-card">
+          <div class="pro-card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div class="pro-card-title">Layanan Psikolog Kampus</div>
+          <p class="pro-card-desc">Layanan konseling psikologis yang disediakan oleh kampusmu secara resmi.</p>
+          <p class="pro-card-info">💰 <span>Biaya:</span> Gratis / Terjangkau</p>
+          <p class="pro-card-info">📍 <span>Lokasi:</span> Sesuai lokasi kampus</p>
+          <p class="pro-card-info">🕐 <span>Jam:</span> Sesuai jadwal kampus</p>
+          <a href="#" class="pro-card-link">Lihat Detail →</a>
+        </div>
+        <!-- Konseling Online -->
+        <div class="pro-card">
+          <div class="pro-card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div class="pro-card-title">Konseling Online Terverifikasi</div>
+          <p class="pro-card-desc">Platform konseling daring dengan psikolog terlisensi yang bisa diakses dari mana saja.</p>
+          <p class="pro-card-info">💰 <span>Biaya:</span> Terjangkau</p>
+          <p class="pro-card-info">📍 <span>Alamat:</span> Sesuai lokasi</p>
+          <p class="pro-card-info">🕐 <span>Jam:</span> Fleksibel</p>
+          <a href="#" class="pro-card-link">Lihat Detail →</a>
+        </div>
+        <!-- Klinik/RS -->
+        <div class="pro-card">
+          <div class="pro-card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <div class="pro-card-title">Klinik atau Rumah Sakit</div>
+          <p class="pro-card-desc">Fasilitas kesehatan dengan layanan kesehatan jiwa dan psikiater berlisensi.</p>
+          <p class="pro-card-info">💰 <span>Biaya:</span> BPJS / Umum</p>
+          <p class="pro-card-info">📍 <span>Alamat:</span> Sesuai lokasi</p>
+          <p class="pro-card-info">🕐 <span>Jam:</span> 08.00 – 21.00</p>
+          <a href="#" class="pro-card-link">Lihat Detail →</a>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div style="margin-top:60px;">
+        <h2 class="section-title" style="text-align:left;margin-bottom:24px;font-size:1.35rem;" id="faq-bantuan-title">Pertanyaan Umum</h2>
+        <div class="accordion-item">
+          <div class="accordion-header" tabindex="0" role="button">
+            <span class="accordion-title">Kapan saya harus mencari bantuan profesional?</span>
+            <div class="accordion-icon" aria-hidden="true">+</div>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">Segera cari bantuan profesional jika kamu mengalami pikiran untuk menyakiti diri sendiri, perasaan putus asa yang berkepanjangan, tidak bisa berfungsi sehari-hari, atau gejala yang mengganggu secara signifikan selama lebih dari 2 minggu.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" tabindex="0" role="button">
+            <span class="accordion-title">Bagaimana cara mengakses layanan psikolog kampus?</span>
+            <div class="accordion-icon" aria-hidden="true">+</div>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">Hubungi bagian kemahasiswaan atau bimbingan konseling di kampusmu. Biasanya mereka menyediakan layanan konseling gratis atau bersubsidi untuk mahasiswa aktif. Tanyakan langsung ke bagian administrasi kampusmu.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" tabindex="0" role="button">
+            <span class="accordion-title">Apakah layanan konseling bisa ditanggung BPJS?</span>
+            <div class="accordion-icon" aria-hidden="true">+</div>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">Ya, layanan kesehatan jiwa termasuk dalam coverage BPJS Kesehatan. Kamu bisa mengaksesnya melalui Fasilitas Kesehatan Tingkat Pertama (FKTP) yang terdaftar, kemudian dirujuk ke spesialis jika diperlukan.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="logo" style="margin-bottom:14px;"><div class="logo-icon"><svg viewBox="0 0 52 36" height="36" xmlns="http://www.w3.org/2000/svg" style="width:auto;"><g transform="translate(18,1) scale(1.35)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#A87EC8"/></g><circle cx="16" cy="18" r="14" fill="white"/><path d="M16,18 L16,4 A14,14 0 0,1 23,5.9 Z" fill="#7B55A8"/><g transform="translate(22,5) scale(1.0)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#F2C0D8"/></g></svg></div>JedaLog</div><p class="footer-desc">Ruang curhat anonim untuk mahasiswa Indonesia.</p><div class="social-links"><a href="#" class="social-btn" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="#" class="social-btn" aria-label="Twitter/X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="#" class="social-btn" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.97A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a></div></div>
+        <div><h3 class="footer-col-title">Navigasi</h3><ul class="footer-links"><li><a href="#tentang" data-page="tentang">Tentang Kami</a></li><li><a href="#layanan" data-page="layanan">Layanan</a></li><li><a href="#bantuan" data-page="bantuan">Bantuan</a></li><li><a href="#kontak" data-page="kontak">Kontak</a></li></ul></div>
+        <div><h3 class="footer-col-title">Layanan</h3><ul class="footer-links"><li><a href="#curhat" data-page="curhat">Ruang Curhat</a></li><li><a href="#chat" data-page="chat">Chat AI</a></li><li><a href="#refleksi" data-page="refleksi">Panduan Refleksi</a></li><li><a href="#bantuan" data-page="bantuan">Rujukan Bantuan</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p class="footer-copy">© 2024 JedaLog. Semua hak dilindungi.</p><p class="footer-love">Dibuat dengan <span>♥</span> untuk mahasiswa Indonesia</p></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ====================== PAGE: KONTAK ====================== -->
+<div class="page" id="page-kontak">
+
+  <!-- Hero -->
+  <section class="general-hero" aria-labelledby="kontak-title">
+    <div class="general-hero-inner">
+      <div>
+        <span class="page-label">Kontak</span>
+        <h1 id="kontak-title" class="hero-title" style="font-size:clamp(2rem,4vw,3rem);">Hubungi Kami</h1>
+        <p class="hero-desc">Jika ada pertanyaan, masukan, atau bantuan lebih lanjut, jangan ragu untuk menghubungi kami.</p>
+      </div>
+      <div class="hero-image">
+        <!-- Phone illustration -->
+        <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;height:auto;" aria-hidden="true">
+          <ellipse cx="210" cy="180" rx="178" ry="147" fill="#EAF0FF" opacity="0.42"/>
+          <text x="58" y="92" font-size="17" fill="#A8C0FF" opacity="0.62">✦</text>
+          <text x="352" y="82" font-size="15" fill="#A8C0FF" opacity="0.52">✦</text>
+          <!-- Paper plane -->
+          <path d="M322 82 L300 115 L316 120 L322 82Z" fill="#3164C8" opacity="0.72"/>
+          <path d="M322 82 L278 104 L316 120Z" fill="#4A7DD9" opacity="0.82"/>
+          <path d="M316 120 L305 136 L322 82" fill="#3164C8" opacity="0.52"/>
+          <!-- Envelope -->
+          <rect x="56" y="152" width="84" height="60" rx="8.5" fill="white" stroke="#D1DCF5" stroke-width="2.2"/>
+          <path d="M56 160 L98 189 L140 160" fill="none" stroke="#3164C8" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M56 199 L82 178" stroke="#D1DCF5" stroke-width="1.5"/>
+          <path d="M140 199 L114 178" stroke="#D1DCF5" stroke-width="1.5"/>
+          <!-- Phone body -->
+          <rect x="140" y="38" width="136" height="252" rx="23" fill="#2A3F70"/>
+          <rect x="146" y="44" width="124" height="242" rx="19.5" fill="#1A2C55"/>
+          <!-- Screen -->
+          <rect x="149" y="60" width="118" height="210" rx="14.5" fill="#EAF0FF"/>
+          <!-- Notch -->
+          <rect x="184" y="46" width="48" height="8.5" rx="4.2" fill="#1A2C55"/>
+          <!-- Screen top bar -->
+          <rect x="149" y="60" width="118" height="28" rx="14.5" fill="#3164C8"/>
+          <rect x="149" y="74" width="118" height="14" rx="0" fill="#3164C8"/>
+          <rect x="164" y="68" width="54" height="6.5" rx="3" fill="white" opacity="0.72"/>
+          <rect x="228" y="67" width="18" height="18" rx="9" fill="white" opacity="0.22"/>
+          <!-- Chat messages -->
+          <rect x="155" y="97" width="74" height="22" rx="8.5" fill="#3164C8"/>
+          <path d="M163 119 L158 127 L169 119" fill="#3164C8"/>
+          <rect x="159" y="103" width="66" height="4.5" rx="2" fill="white" opacity="0.52"/>
+          <rect x="159" y="110" width="50" height="4.5" rx="2" fill="white" opacity="0.42"/>
+          <rect x="191" y="126" width="60" height="19" rx="8.5" fill="white" stroke="#D1DCF5" stroke-width="1.2"/>
+          <rect x="196" y="132" width="50" height="3.5" rx="1.5" fill="#A0B8D8" opacity="0.72"/>
+          <rect x="155" y="151" width="84" height="22" rx="8.5" fill="#3164C8" opacity="0.87"/>
+          <path d="M163 173 L158 181 L169 173" fill="#3164C8" opacity="0.87"/>
+          <!-- Typing indicator -->
+          <rect x="157" y="181" width="46" height="17" rx="8.5" fill="#E0ECFF"/>
+          <circle cx="167" cy="189.5" r="3.2" fill="#8AABCC"/>
+          <circle cx="178" cy="189.5" r="3.2" fill="#8AABCC"/>
+          <circle cx="189" cy="189.5" r="3.2" fill="#8AABCC"/>
+          <!-- Input bar -->
+          <rect x="151" y="204" width="114" height="22" rx="11" fill="white" stroke="#D1DCF5" stroke-width="1.6"/>
+          <rect x="158" y="211" width="64" height="4.5" rx="2" fill="#D1DCF5"/>
+          <circle cx="252" cy="215" r="7.5" fill="#3164C8"/>
+          <path d="M249 215 L255 215 M252 212 L252 218" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- Home indicator -->
+          <rect x="182" y="280" width="52" height="5.5" rx="2.7" fill="#2A3F70"/>
+          <!-- Floating elements -->
+          <text x="290" y="164" font-size="17" fill="#FFB0B0" opacity="0.72">♡</text>
+          <text x="72" y="134" font-size="13" fill="#A8C0FF" opacity="0.65">♡</text>
+          <!-- Plant -->
+          <rect x="342" y="245" width="46" height="52" rx="8.5" fill="#8B6B4A"/>
+          <ellipse cx="365" cy="245" rx="23" ry="7.5" fill="#A0784E"/>
+          <path d="M365 245 Q350 213 330 203 Q345 210 360 226" fill="#5A9A5A"/>
+          <path d="M365 245 Q382 208 400 200 Q386 211 374 228" fill="#4A8A4A"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="contact-section" aria-labelledby="contact-form-title">
+    <div class="contact-grid">
+      <!-- Info Card -->
+      <div class="contact-info-card" role="complementary" aria-label="Informasi kontak">
+        <h2 style="font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:24px;">Informasi Kontak</h2>
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">halo@jedalog.id</div>
+            <div class="contact-sub">Balas dalam 1×24 jam</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.12.96.36 1.9.71 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.71A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+62 812 3456 7890</div>
+            <div class="contact-sub">Khusus pertanyaan umum</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-label">Jam Operasional</div>
+            <div class="contact-value">Setiap hari, 24 jam</div>
+            <div class="contact-sub">Sistem otomatis selalu aktif</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Card -->
+      <div class="form-card">
+        <h2 id="contact-form-title" class="form-title">Kirim Pesan</h2>
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="contactName">Nama <span class="optional">(opsional)</span></label>
+            <input type="text" id="contactName" class="form-input" placeholder="Nama kamu (bisa dikosongkan)" autocomplete="name"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contactEmail">Email <span style="color:#E53E3E;">*</span></label>
+            <input type="email" id="contactEmail" class="form-input" placeholder="email@gmail.com" required autocomplete="email"/>
+            <p class="form-error" id="contactEmailError">Masukkan alamat email yang valid.</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contactMessage">Pesan Kamu <span style="color:#E53E3E;">*</span></label>
+            <textarea id="contactMessage" class="form-input" rows="5" placeholder="Tuliskan pertanyaan atau pesanmu di sini..." required></textarea>
+            <p class="form-error" id="contactMessageError">Pesan minimal 10 karakter.</p>
+          </div>
+          <button type="submit" class="btn-primary" id="contactSubmitBtn" style="width:100%;justify-content:center;">Kirim Pesan →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:14px;">
+            <div class="logo-icon"><svg viewBox="0 0 52 36" height="36" xmlns="http://www.w3.org/2000/svg" style="width:auto;"><g transform="translate(18,1) scale(1.35)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#A87EC8"/></g><circle cx="16" cy="18" r="14" fill="white"/><path d="M16,18 L16,4 A14,14 0 0,1 23,5.9 Z" fill="#7B55A8"/><g transform="translate(22,5) scale(1.0)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#F2C0D8"/></g></svg></div>
+            JedaLog
+          </div>
+          <p class="footer-desc">Ruang curhat anonim untuk mahasiswa Indonesia.</p>
+          <div class="social-links">
+            <a href="#" class="social-btn" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" class="social-btn" aria-label="Twitter/X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.97A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Navigasi</h3>
+          <ul class="footer-links">
+            <li><a href="#tentang" data-page="tentang">Tentang Kami</a></li>
+            <li><a href="#layanan" data-page="layanan">Layanan</a></li>
+            <li><a href="#bantuan" data-page="bantuan">Bantuan</a></li>
+            <li><a href="#kontak" data-page="kontak">Kontak</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Layanan</h3>
+          <ul class="footer-links">
+            <li><a href="#curhat" data-page="curhat">Ruang Curhat</a></li><li><a href="#chat" data-page="chat">Chat AI</a></li>
+            <li><a href="#refleksi" data-page="refleksi">Panduan Refleksi</a></li>
+            <li><a href="#bantuan" data-page="bantuan">Rujukan Bantuan</a></li>
+            <li><a href="admin.html" style="opacity:0.5;font-size:0.78rem;">⚙️ Panel Admin</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2024 JedaLog. Semua hak dilindungi.</p>
+        <p class="footer-love">Dibuat dengan <span>♥</span> untuk mahasiswa Indonesia</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ====================== PAGE: LOGIN ====================== -->
+<div class="page" id="page-login">
+  <div class="auth-page">
+    <div class="auth-card">
+      <a href="#beranda" data-page="beranda" class="auth-logo">
+        <div class="logo-icon"><svg viewBox="0 0 52 36" height="36" xmlns="http://www.w3.org/2000/svg" style="width:auto;"><g transform="translate(18,1) scale(1.35)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#A87EC8"/></g><circle cx="16" cy="18" r="14" fill="white"/><path d="M16,18 L16,4 A14,14 0 0,1 23,5.9 Z" fill="#7B55A8"/><g transform="translate(22,5) scale(1.0)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#F2C0D8"/></g></svg></div>
+        JedaLog
+      </a>
+      <h1 class="auth-title">Selamat Datang Kembali</h1>
+      <p class="auth-subtitle">Masuk untuk melanjutkan sesi curhatan dan refleksimu.</p>
+
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="email@gmail.com" required autocomplete="email"/>
+          <div class="form-error" id="loginEmailError">Masukkan alamat email yang valid.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="loginPass" style="display:flex;justify-content:space-between;">
+            Password
+            <a href="#" style="font-size:0.78rem;color:var(--royal);font-weight:500;">Lupa password?</a>
+          </label>
+          <div class="pw-wrap">
+            <input type="password" id="loginPass" class="form-input" placeholder="Masukkan password" required autocomplete="current-password"/>
+            <button type="button" class="pw-toggle" id="loginPassToggle" aria-label="Tampilkan password" title="Tampilkan password">👁</button>
+          </div>
+          <div class="form-error" id="loginPassError">Password tidak boleh kosong.</div>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:8px;" id="loginSubmitBtn">Masuk →</button>
+      </form>
+
+      <div class="divider">atau</div>
+      <button class="btn-secondary" style="width:100%;justify-content:center;" onclick="Router.navigate('curhat')">
+        🎭 Lanjut sebagai Tamu (Anonim)
+      </button>
+
+      <p class="auth-footer">Belum punya akun? <a href="#register" data-page="register">Daftar sekarang</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== PAGE: REGISTER ====================== -->
+<div class="page" id="page-register">
+  <div class="auth-page">
+    <div class="auth-card">
+      <a href="#beranda" data-page="beranda" class="auth-logo">
+        <div class="logo-icon"><svg viewBox="0 0 52 36" height="36" xmlns="http://www.w3.org/2000/svg" style="width:auto;"><g transform="translate(18,1) scale(1.35)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#A87EC8"/></g><circle cx="16" cy="18" r="14" fill="white"/><path d="M16,18 L16,4 A14,14 0 0,1 23,5.9 Z" fill="#7B55A8"/><g transform="translate(22,5) scale(1.0)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#F2C0D8"/></g></svg></div>
+        JedaLog
+      </a>
+      <h1 class="auth-title">Buat Akun Baru</h1>
+      <p class="auth-subtitle">Daftar untuk menyimpan progres refleksimu dan akses fitur lengkap.</p>
+
+      <form id="registerForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="regEmail">Email Kampus</label>
+          <input type="email" id="regEmail" class="form-input" placeholder="email@gmail.com" required autocomplete="email"/>
+          <div class="form-error" id="regEmailError">Masukkan alamat email yang valid.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="regPass">Password</label>
+          <input type="password" id="regPass" class="form-input" placeholder="Minimal 8 karakter" required autocomplete="new-password"/>
+          <div class="form-error" id="regPassError">Password minimal 8 karakter.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="regConfirm">Konfirmasi Password</label>
+          <input type="password" id="regConfirm" class="form-input" placeholder="Ulangi password" required autocomplete="new-password"/>
+          <div class="form-error" id="regConfirmError">Konfirmasi password tidak cocok.</div>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text-gray);margin-bottom:16px;line-height:1.6;">
+          Dengan mendaftar, kamu menyetujui <a href="#" style="color:var(--royal);">Syarat &amp; Ketentuan</a> dan <a href="#" style="color:var(--royal);">Kebijakan Privasi</a> JedaLog.
+        </p>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;" id="registerSubmitBtn">Daftar Sekarang →</button>
+      </form>
+
+      <div class="divider">atau</div>
+      <button class="btn-secondary" style="width:100%;justify-content:center;" onclick="Router.navigate('curhat')">
+        🎭 Lanjut sebagai Tamu (Anonim)
+      </button>
+
+      <p class="auth-footer">Sudah punya akun? <a href="#login" data-page="login">Masuk di sini</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== PAGE: CURHAT ====================== -->
+<div class="page" id="page-curhat">
+  <div class="curhat-page">
+    <div class="curhat-inner">
+      <!-- Back button -->
+      <div style="margin-bottom:20px;">
+        <button class="btn-secondary btn-sm" onclick="Router.navigate('beranda')" id="curhatBackBtn">← Kembali ke Beranda</button>
+      </div>
+
+      <div class="curhat-card">
+        <!-- Anon badge -->
+        <div class="anon-badge" aria-label="Mode anonim aktif">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          Mode Anonim Aktif
+        </div>
+        <a href="#chat" data-page="chat" class="btn-secondary btn-sm" id="curhatToChatBtn" style="margin:0 0 24px 10px;vertical-align:top;">💬 Lebih nyaman ngobrol? Chat dengan AI</a>
+
+        <!-- Progress -->
+        <div class="step-indicator" role="progressbar" aria-label="Progress form curhat">
+          <div class="step-dot active"></div>
+          <div class="step-dot"></div>
+          <div class="step-dot"></div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="curhatProgress" style="width:33%"></div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-gray);margin-bottom:28px;" id="curhatStepText">Langkah 1 dari 3</p>
+
+        <!-- Step 1: Mood -->
+        <div class="curhat-step" style="display:block;">
+          <h1 style="font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:6px;">Bagaimana perasaanmu sekarang?</h1>
+          <p style="font-size:0.88rem;color:var(--text-gray);margin-bottom:4px;">Pilih satu yang paling menggambarkan kondisimu saat ini.</p>
+          <div class="mood-grid" role="group" aria-label="Pilih mood">
+            <button class="mood-btn" data-mood="sangat-sedih" aria-label="Sangat Sedih">
+              <span class="mood-emoji">😭</span>
+              <span>Sangat Sedih</span>
+            </button>
+            <button class="mood-btn" data-mood="cemas" aria-label="Cemas">
+              <span class="mood-emoji">😰</span>
+              <span>Cemas</span>
+            </button>
+            <button class="mood-btn" data-mood="lelah" aria-label="Lelah">
+              <span class="mood-emoji">😔</span>
+              <span>Lelah</span>
+            </button>
+            <button class="mood-btn" data-mood="marah" aria-label="Marah">
+              <span class="mood-emoji">😤</span>
+              <span>Marah</span>
+            </button>
+            <button class="mood-btn" data-mood="bingung" aria-label="Bingung">
+              <span class="mood-emoji">😕</span>
+              <span>Bingung</span>
+            </button>
+          </div>
+          <div style="display:flex;justify-content:flex-end;margin-top:8px;">
+            <button class="btn-primary" onclick="nextCurhatStep()" id="curhatNext1Btn">Lanjut →</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Story -->
+        <div class="curhat-step">
+          <h2 style="font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:6px;">Ceritakan apa yang kamu rasakan</h2>
+          <p style="font-size:0.88rem;color:var(--text-gray);margin-bottom:16px;">Pilih topik yang relevan (bisa lebih dari satu).</p>
+          <div class="topic-grid" role="group" aria-label="Pilih topik">
+            <button class="topic-chip" data-topic="akademik">📚 Akademik</button>
+            <button class="topic-chip" data-topic="hubungan">💔 Hubungan</button>
+            <button class="topic-chip" data-topic="keluarga">🏠 Keluarga</button>
+            <button class="topic-chip" data-topic="keuangan">💰 Keuangan</button>
+            <button class="topic-chip" data-topic="organisasi">🎯 Organisasi</button>
+            <button class="topic-chip" data-topic="kesehatan">🏥 Kesehatan</button>
+            <button class="topic-chip" data-topic="karir">💼 Karir</button>
+            <button class="topic-chip" data-topic="lainnya">💭 Lainnya</button>
+          </div>
+          <label class="form-label" for="curhatText" style="margin-top:8px;">Ceritakan lebih detail:</label>
+          <textarea id="curhatText" class="form-input" rows="6"
+            placeholder="Tulis apa yang sedang membebanimu... Tidak ada yang menilai, ini hanya untukmu."
+            maxlength="500"></textarea>
+          <p style="font-size:0.78rem;color:var(--text-gray);text-align:right;margin-top:4px;" id="charCounter">0/500</p>
+          <div style="display:flex;justify-content:space-between;margin-top:12px;">
+            <button class="btn-secondary" onclick="prevCurhatStep()" id="curhatBack2Btn">← Kembali</button>
+            <button class="btn-primary" onclick="nextCurhatStep()" id="curhatNext2Btn">Lanjut →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Review -->
+        <div class="curhat-step">
+          <h2 style="font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:6px;">Siap untuk dikirim?</h2>
+          <p style="font-size:0.88rem;color:var(--text-gray);margin-bottom:24px;">Curhatan kamu bersifat anonim dan akan dirahasiakan. Kamu bisa langsung lanjut ke panduan refleksi setelah ini.</p>
+
+          <div style="background:var(--bg-soft);border-radius:var(--radius-md);padding:20px;border:1px solid var(--border);margin-bottom:24px;">
+            <div style="font-size:0.82rem;font-weight:600;color:var(--royal);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">Ringkasan</div>
+            <p style="font-size:0.88rem;color:var(--text-gray);">✓ Perasaanmu sudah dipilih</p>
+            <p style="font-size:0.88rem;color:var(--text-gray);">✓ Ceritamu sudah ditulis</p>
+            <p style="font-size:0.88rem;color:var(--text-gray);">✓ Mode anonim aktif</p>
+          </div>
+
+          <div style="background:#FFF9EC;border:1px solid #FFE4A0;border-radius:var(--radius-md);padding:16px;margin-bottom:24px;" role="note">
+            <p style="font-size:0.84rem;color:#92600A;line-height:1.6;">
+              💡 <strong>Pengingat:</strong> JedaLog adalah ruang curhat dan refleksi. Jika kamu dalam kondisi darurat, segera hubungi <strong>119 ext. 8</strong>.
+            </p>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <button class="btn-secondary" onclick="prevCurhatStep()" id="curhatBack3Btn">← Kembali</button>
+            <button class="btn-primary" onclick="submitCurhat()" id="submitCurhat">💙 Kirim Curhatan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== PAGE: REFLEKSI ====================== -->
+<div class="page" id="page-refleksi">
+  <div class="refleksi-page">
+    <div style="max-width:760px;margin:0 auto;">
+      <div style="margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;">
+        <button class="btn-secondary btn-sm" onclick="Router.navigate('beranda')" id="refleksiBackBtn">← Beranda</button>
+        <span class="anon-badge" aria-label="Panduan refleksi">🧘 Panduan Refleksi</span>
+      </div>
+
+      <div style="text-align:center;margin-bottom:32px;">
+        <h1 style="font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:8px;">Panduan Refleksi Diri</h1>
+        <p style="font-size:0.9rem;color:var(--text-gray);">Ikuti langkah-langkah sederhana ini untuk membantu kamu merasa lebih tenang.</p>
+      </div>
+
+      <div id="refleksiContainer">
+        <!-- Rendered by JS -->
+        <div class="refleksi-card" style="text-align:center;padding:60px 40px;">
+          <div style="font-size:2.5rem;margin-bottom:16px;">🌬️</div>
+          <p style="font-size:1.1rem;font-weight:600;color:var(--navy);">Memuat panduan refleksi...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== PAGE: CHAT AI ====================== -->
+<div class="page" id="page-chat">
+  <div class="chat-page">
+    <div class="chat-wrap">
+      <div class="chat-topbar">
+        <button class="btn-secondary btn-sm" onclick="Router.navigate('beranda')" id="chatBackBtn">← Beranda</button>
+        <span class="anon-badge" aria-label="Mode anonim aktif">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          Mode Anonim Aktif
+        </span>
+        <div class="chat-topbar-actions">
+          <button class="btn-secondary btn-sm" id="chatNewBtn" type="button">＋ Percakapan Baru</button>
+          <a href="#refleksi" data-page="refleksi" class="btn-secondary btn-sm" id="chatRefleksiBtn">🧘 Panduan Refleksi</a>
+        </div>
+      </div>
+
+      <div class="chat-card">
+        <div class="chat-head">
+          <div class="chat-avatar" aria-hidden="true">
+            <svg viewBox="0 0 52 36" height="26" xmlns="http://www.w3.org/2000/svg" style="width:auto;"><g transform="translate(18,1) scale(1.35)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#A87EC8"/></g><circle cx="16" cy="18" r="14" fill="white"/><path d="M16,18 L16,4 A14,14 0 0,1 23,5.9 Z" fill="#7B55A8"/><g transform="translate(22,5) scale(1.0)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#F2C0D8"/></g></svg>
+          </div>
+          <div>
+            <div class="chat-head-title">Teman Jeda</div>
+            <div class="chat-head-sub"><span class="chat-dot"></span> Siap mendengarkan</div>
+          </div>
+        </div>
+
+        <div class="chat-log" id="chatLog" aria-live="polite" aria-label="Percakapan"></div>
+
+        <form class="chat-form" id="chatForm" autocomplete="off">
+          <textarea class="chat-input" id="chatInput" rows="1" placeholder="Ceritakan apa yang kamu rasakan..." aria-label="Tulis pesan" maxlength="1000"></textarea>
+          <button class="btn-primary chat-send" id="chatSend" type="submit" aria-label="Kirim pesan" disabled>Kirim →</button>
+        </form>
+        <p class="chat-note">Teman Jeda adalah AI, bukan pengganti psikolog. Percakapan disimpan anonim dan dapat ditinjau tim JedaLog demi keamanan. Dalam kondisi darurat hubungi <strong>119 ext. 8</strong> atau <strong>112</strong>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== SCRIPTS ====================== -->
+<script src="js/illustrations.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script src="js/chat.js"></script>
+
+</body>
+</html>

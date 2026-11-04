@@ -1,0 +1,543 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="JedaLog Admin Panel — Kelola dan pantau data log curhat yang tersimpan di sistem."/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>Admin Panel — JedaLog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/admin.css"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 38'><rect width='38' height='38' rx='10' fill='%237B55A8'/><path transform='translate(14,2) scale(0.95)' d='M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z' fill='%23A87EC8'/><circle cx='13' cy='20' r='11' fill='white'/><path d='M13,20 L13,10 A10,10 0 0,1 19.8,12.9 Z' fill='%237B55A8'/><path transform='translate(16,5) scale(0.72)' d='M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z' fill='%23F2C0D8'/></svg>"/>
+</head>
+<body>
+
+<!-- ====================== LOGIN OVERLAY ====================== -->
+<div id="adminLoginOverlay" class="admin-login-overlay">
+  <div class="admin-login-card">
+    <div class="admin-login-logo">
+      <svg viewBox="0 0 52 36" height="32" xmlns="http://www.w3.org/2000/svg" style="width:auto;">
+        <g transform="translate(18,1) scale(1.35)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#A87EC8"/></g>
+        <circle cx="16" cy="18" r="14" fill="white"/>
+        <path d="M16,18 L16,4 A14,14 0 0,1 23,5.9 Z" fill="#7B55A8"/>
+        <g transform="translate(22,5) scale(1.0)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#F2C0D8"/></g>
+      </svg>
+      <span>JedaLog</span>
+    </div>
+
+    <div class="admin-login-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Panel Admin
+    </div>
+
+    <h1 class="admin-login-title">Masuk ke Admin</h1>
+    <p class="admin-login-subtitle">Masukkan PIN untuk mengakses panel administrasi JedaLog.</p>
+
+    <form id="adminLoginForm" autocomplete="off">
+      <div class="form-group">
+        <label class="form-label" for="adminPinInput">PIN Admin</label>
+        <div class="pin-input-wrapper">
+          <div class="pin-dots" id="pinDots">
+            <div class="pin-dot" id="dot0"></div>
+            <div class="pin-dot" id="dot1"></div>
+            <div class="pin-dot" id="dot2"></div>
+            <div class="pin-dot" id="dot3"></div>
+          </div>
+          <input type="password" id="adminPinInput" class="form-input pin-hidden-input"
+            maxlength="4" inputmode="numeric" pattern="[0-9]*"
+            placeholder="Ketik PIN 4 digit"
+            autocomplete="off" aria-label="PIN Admin 4 digit"/>
+        </div>
+        <div class="form-error" id="pinError">PIN salah. Coba lagi.</div>
+      </div>
+
+      <div class="pin-numpad" id="pinNumpad" aria-label="Papan angka PIN">
+        <button type="button" class="pin-key" data-val="1">1</button>
+        <button type="button" class="pin-key" data-val="2">2</button>
+        <button type="button" class="pin-key" data-val="3">3</button>
+        <button type="button" class="pin-key" data-val="4">4</button>
+        <button type="button" class="pin-key" data-val="5">5</button>
+        <button type="button" class="pin-key" data-val="6">6</button>
+        <button type="button" class="pin-key" data-val="7">7</button>
+        <button type="button" class="pin-key" data-val="8">8</button>
+        <button type="button" class="pin-key" data-val="9">9</button>
+        <button type="button" class="pin-key pin-key-clear" data-val="clear">RESET</button>
+        <button type="button" class="pin-key" data-val="0">0</button>
+        <button type="button" class="pin-key pin-key-del" data-val="del">DEL</button>
+      </div>
+
+      <button type="submit" class="btn-primary" id="adminLoginBtn" style="width:100%;justify-content:center;margin-top:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        Masuk ke Panel Admin
+      </button>
+    </form>
+
+    <p class="admin-login-hint">Hint: PIN default adalah <strong>1234</strong></p>
+
+    <div style="text-align:center;margin-top:20px;">
+      <a href="index.html" class="admin-back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        Kembali ke Beranda
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== ADMIN PANEL ====================== -->
+<div id="adminPanel" class="admin-panel" style="display:none;">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="admin-sidebar-logo">
+      <svg viewBox="0 0 52 36" height="28" xmlns="http://www.w3.org/2000/svg" style="width:auto;">
+        <g transform="translate(18,1) scale(1.35)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#A87EC8"/></g>
+        <circle cx="16" cy="18" r="14" fill="white"/>
+        <path d="M16,18 L16,4 A14,14 0 0,1 23,5.9 Z" fill="#7B55A8"/>
+        <g transform="translate(22,5) scale(1.0)"><path d="M12.9 21C12.9 21 4 14.5 4 9C4 5.7 6.7 3 10 3C11.1 3 12.1 3.4 12.9 4.1C13.7 3.4 14.7 3 15.8 3C19.1 3 21.8 5.7 21.8 9C21.8 14.5 12.9 21 12.9 21Z" fill="#F2C0D8"/></g>
+      </svg>
+      <div>
+        <div class="admin-sidebar-brand">JedaLog</div>
+        <div class="admin-sidebar-sub">Admin Panel</div>
+      </div>
+    </div>
+
+    <nav class="admin-sidebar-nav">
+      <a href="#" class="admin-nav-item active" id="sidebarDashboard">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="#" class="admin-nav-item" id="sidebarLogs">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Data Log Curhat
+      </a>
+      <a href="#" class="admin-nav-item" id="sidebarMessages">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Pesan Masuk
+        <span class="admin-nav-badge" id="unreadBadge" style="display:none;">0</span>
+      </a>
+      <a href="#" class="admin-nav-item" id="sidebarChats">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5z"/><circle cx="8.5" cy="11.5" r=".6"/><circle cx="12" cy="11.5" r=".6"/><circle cx="15.5" cy="11.5" r=".6"/></svg>
+        Chat AI
+        <span class="admin-nav-badge" id="chatFlagBadge" style="display:none;">0</span>
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-bottom">
+      <a href="index.html" class="admin-nav-item admin-nav-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Ke Beranda
+      </a>
+      <button class="admin-nav-item admin-nav-logout" id="adminLogoutBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Keluar
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+
+    <!-- Top Bar -->
+    <div class="admin-topbar">
+      <div class="admin-topbar-left">
+        <button class="admin-sidebar-toggle" id="sidebarToggleBtn" aria-label="Toggle sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="admin-topbar-title" id="topbarTitle">Dashboard</div>
+      </div>
+      <div class="admin-topbar-right">
+        <div class="admin-topbar-time" id="adminClock"></div>
+        <div class="admin-user-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Administrator
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="viewDashboard" class="admin-view active">
+      <div class="admin-page-header">
+        <h2 class="admin-page-title">Selamat Datang, Admin</h2>
+        <p class="admin-page-subtitle">Pantau semua data log curhat yang masuk ke sistem JedaLog.</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card admin-stat-blue">
+          <div class="admin-stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="admin-stat-info">
+            <div class="admin-stat-value" id="statTotal">0</div>
+            <div class="admin-stat-label">Total Log Curhat</div>
+          </div>
+        </div>
+        <div class="admin-stat-card admin-stat-green">
+          <div class="admin-stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div class="admin-stat-info">
+            <div class="admin-stat-value" id="statToday">0</div>
+            <div class="admin-stat-label">Log Hari Ini</div>
+          </div>
+        </div>
+        <div class="admin-stat-card admin-stat-purple">
+          <div class="admin-stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div class="admin-stat-info">
+            <div class="admin-stat-value" id="statMostMood">-</div>
+            <div class="admin-stat-label">Perasaan Terbanyak</div>
+          </div>
+        </div>
+        <div class="admin-stat-card admin-stat-orange">
+          <div class="admin-stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="admin-stat-info">
+            <div class="admin-stat-value" id="statThisWeek">0</div>
+            <div class="admin-stat-label">Log Minggu Ini</div>
+          </div>
+        </div>
+        <div class="admin-stat-card admin-stat-red" style="cursor:pointer;" onclick="navigateTo('messages')">
+          <div class="admin-stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="admin-stat-info">
+            <div class="admin-stat-value" id="statUnreadMsg">0</div>
+            <div class="admin-stat-label">Pesan Belum Dibaca</div>
+          </div>
+        </div>
+        <div class="admin-stat-card admin-stat-blue" style="cursor:pointer;" onclick="navigateTo('chats')">
+          <div class="admin-stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5z"/></svg>
+          </div>
+          <div class="admin-stat-info">
+            <div class="admin-stat-value" id="statChatSessions">0</div>
+            <div class="admin-stat-label">Sesi Chat AI</div>
+          </div>
+        </div>
+        <div class="admin-stat-card admin-stat-red" style="cursor:pointer;" onclick="navigateTo('chats')">
+          <div class="admin-stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="admin-stat-info">
+            <div class="admin-stat-value" id="statChatFlagged">0</div>
+            <div class="admin-stat-label">Chat Perlu Perhatian</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mood Distribution -->
+      <div class="admin-card" style="margin-top:24px;">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title">Distribusi Perasaan</h3>
+        </div>
+        <div class="mood-distribution" id="moodDistribution">
+          <div class="mood-dist-empty">Belum ada data log untuk ditampilkan.</div>
+        </div>
+      </div>
+
+      <!-- Recent Logs -->
+      <div class="admin-card" style="margin-top:24px;">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title">Log Terbaru</h3>
+          <button class="admin-btn-link" id="viewAllLogsBtn">Lihat Semua</button>
+        </div>
+        <div id="recentLogsList" class="recent-logs-list">
+          <div class="admin-empty-state">
+            <div class="admin-empty-icon">📭</div>
+            <div class="admin-empty-title">Belum ada log</div>
+            <div class="admin-empty-desc">Data log curhat akan muncul di sini setelah pengguna mengirim cerita.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Messages Widget -->
+      <div class="admin-card" style="margin-top:24px;">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title">Pesan Terbaru</h3>
+          <button class="admin-btn-link" id="viewAllMsgsBtn">Lihat Semua</button>
+        </div>
+        <div id="recentMsgsList" class="recent-logs-list">
+          <div class="admin-empty-state">
+            <div class="admin-empty-icon">&#128236;</div>
+            <div class="admin-empty-title">Belum ada pesan</div>
+            <div class="admin-empty-desc">Pesan dari form Kontak akan muncul di sini.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Chats Widget -->
+      <div class="admin-card" style="margin-top:24px;">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title">Chat AI Terbaru</h3>
+          <button class="admin-btn-link" id="viewAllChatsBtn">Lihat Semua</button>
+        </div>
+        <div id="recentChatsList" class="recent-logs-list">
+          <div class="admin-empty-state">
+            <div class="admin-empty-icon">💬</div>
+            <div class="admin-empty-title">Belum ada percakapan</div>
+            <div class="admin-empty-desc">Percakapan dari halaman Chat AI akan muncul di sini.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Log View -->
+    <div id="viewLogs" class="admin-view">
+      <div class="admin-page-header">
+        <h2 class="admin-page-title">Data Log Curhat</h2>
+        <p class="admin-page-subtitle">Semua riwayat log yang tersimpan di localStorage browser.</p>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="admin-toolbar">
+        <div class="admin-search-wrap">
+          <svg class="admin-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="adminSearchInput" class="admin-search-input"
+            placeholder="Cari berdasarkan perasaan, topik, atau isi cerita..."
+            aria-label="Cari data log"/>
+        </div>
+
+        <div class="admin-filter-wrap">
+          <select id="adminMoodFilter" class="admin-filter-select" aria-label="Filter perasaan">
+            <option value="">Semua Perasaan</option>
+            <option value="Exhausted">Exhausted</option>
+            <option value="Lelah">Lelah</option>
+            <option value="Marah">Marah</option>
+            <option value="Bingung">Bingung</option>
+            <option value="Sedih">Sedih</option>
+            <option value="Kesal">Kesal</option>
+            <option value="Cemas">Cemas</option>
+            <option value="Biasa">Biasa</option>
+            <option value="Baik">Baik</option>
+            <option value="Bahagia">Bahagia</option>
+          </select>
+          <select id="adminDateFilter" class="admin-filter-select" aria-label="Filter tanggal">
+            <option value="">Semua Tanggal</option>
+            <option value="today">Hari Ini</option>
+            <option value="week">7 Hari Terakhir</option>
+            <option value="month">30 Hari Terakhir</option>
+          </select>
+        </div>
+
+        <div class="admin-action-btns">
+          <button class="admin-btn-export" id="exportCSVBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export CSV
+          </button>
+          <button class="admin-btn-danger" id="deleteAllBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+            Hapus Semua
+          </button>
+        </div>
+      </div>
+
+      <!-- Results Info -->
+      <div class="admin-results-info" id="adminResultsInfo">
+        Menampilkan <span id="resultCount">0</span> data
+      </div>
+
+      <!-- Table -->
+      <div class="admin-card admin-table-card">
+        <div class="admin-table-wrapper">
+          <table class="admin-table" id="adminDataTable">
+            <thead>
+              <tr>
+                <th class="col-no">No.</th>
+                <th class="col-id sortable" data-sort="id">ID Log
+                  <svg class="sort-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 15l5 5 5-5"/><path d="M7 9l5-5 5 5"/></svg>
+                </th>
+                <th class="col-date sortable" data-sort="timestamp">Tanggal &amp; Waktu
+                  <svg class="sort-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 15l5 5 5-5"/><path d="M7 9l5-5 5 5"/></svg>
+                </th>
+                <th class="col-mood sortable" data-sort="mood">Perasaan
+                  <svg class="sort-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 15l5 5 5-5"/><path d="M7 9l5-5 5 5"/></svg>
+                </th>
+                <th class="col-topics">Topik</th>
+                <th class="col-text">Isi Curhat</th>
+                <th class="col-action">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="adminTableBody"></tbody>
+          </table>
+        </div>
+        <div id="adminTableEmpty" class="admin-empty-state" style="display:none;">
+          <div class="admin-empty-icon">🔍</div>
+          <div class="admin-empty-title">Tidak ada data ditemukan</div>
+          <div class="admin-empty-desc">Coba ubah kata kunci pencarian atau filter yang digunakan.</div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="admin-pagination" id="adminPagination"></div>
+    </div>
+
+    <!-- Pesan Masuk View -->
+    <div id="viewMessages" class="admin-view">
+      <div class="admin-page-header">
+        <h2 class="admin-page-title">Pesan Masuk</h2>
+        <p class="admin-page-subtitle">Pesan dari form Kontak yang dikirim pengguna.</p>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="admin-toolbar">
+        <div class="admin-search-wrap">
+          <svg class="admin-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="msgSearchInput" class="admin-search-input"
+            placeholder="Cari nama, email, atau isi pesan..."
+            aria-label="Cari pesan masuk"/>
+        </div>
+        <div class="admin-filter-wrap">
+          <select id="msgStatusFilter" class="admin-filter-select" aria-label="Filter status">
+            <option value="">Semua Status</option>
+            <option value="unread">Belum Dibaca</option>
+            <option value="read">Sudah Dibaca</option>
+          </select>
+          <select id="msgDateFilter" class="admin-filter-select" aria-label="Filter tanggal">
+            <option value="">Semua Tanggal</option>
+            <option value="today">Hari Ini</option>
+            <option value="week">7 Hari Terakhir</option>
+            <option value="month">30 Hari Terakhir</option>
+          </select>
+        </div>
+        <div class="admin-action-btns">
+          <button class="admin-btn-export" id="exportMsgCSVBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export CSV
+          </button>
+          <button class="admin-btn-outline-green" id="markAllReadBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Tandai Semua Dibaca
+          </button>
+          <button class="admin-btn-danger" id="deleteAllMsgBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+            Hapus Semua
+          </button>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="admin-results-info" id="msgResultsInfo">
+        Menampilkan <span id="msgResultCount">0</span> pesan
+        &mdash; <span id="msgUnreadInfo" style="color:#E53E3E;font-weight:700;">0 belum dibaca</span>
+      </div>
+
+      <!-- Messages List -->
+      <div id="msgListContainer" class="admin-card msg-list-card">
+        <div id="msgListBody"></div>
+        <div id="msgListEmpty" class="admin-empty-state" style="display:none;">
+          <div class="admin-empty-icon">📬</div>
+          <div class="admin-empty-title">Tidak ada pesan ditemukan</div>
+          <div class="admin-empty-desc">Coba ubah kata kunci atau filter yang digunakan.</div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="admin-pagination" id="msgPagination"></div>
+    </div>
+
+    <!-- Chat AI View -->
+    <div id="viewChats" class="admin-view">
+      <div class="admin-page-header">
+        <h2 class="admin-page-title">Chat AI</h2>
+        <p class="admin-page-subtitle">Riwayat percakapan pengguna dengan Teman Jeda. Percakapan yang memuat tanda bahaya ditandai merah.</p>
+      </div>
+
+      <div class="admin-toolbar">
+        <div class="admin-search-wrap">
+          <svg class="admin-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="chatSearchInput" class="admin-search-input"
+            placeholder="Cari isi percakapan, perasaan, atau topik..." aria-label="Cari percakapan"/>
+        </div>
+        <div class="admin-filter-wrap">
+          <select id="chatStatusFilter" class="admin-filter-select" aria-label="Filter status">
+            <option value="">Semua Status</option>
+            <option value="flagged">Perlu Perhatian</option>
+            <option value="normal">Normal</option>
+          </select>
+          <select id="chatDateFilter" class="admin-filter-select" aria-label="Filter tanggal">
+            <option value="">Semua Tanggal</option>
+            <option value="today">Hari Ini</option>
+            <option value="week">7 Hari Terakhir</option>
+            <option value="month">30 Hari Terakhir</option>
+          </select>
+        </div>
+        <div class="admin-action-btns">
+          <button class="admin-btn-export" id="exportChatCSVBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export CSV
+          </button>
+          <button class="admin-btn-danger" id="deleteAllChatsBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+            Hapus Semua
+          </button>
+        </div>
+      </div>
+
+      <div class="admin-results-info">
+        Menampilkan <span id="chatResultCount">0</span> percakapan
+        &mdash; <span id="chatFlagInfo" style="color:#E53E3E;font-weight:700;">0 perlu perhatian</span>
+      </div>
+
+      <div class="admin-card msg-list-card">
+        <div id="chatListBody"></div>
+        <div id="chatListEmpty" class="admin-empty-state" style="display:none;">
+          <div class="admin-empty-icon">💬</div>
+          <div class="admin-empty-title">Belum ada percakapan</div>
+          <div class="admin-empty-desc">Coba ubah kata kunci atau filter, atau tunggu pengguna memulai chat.</div>
+        </div>
+      </div>
+
+      <div class="admin-pagination" id="chatPagination"></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ====================== CONFIRM DIALOG ====================== -->
+<div id="confirmDialog" class="admin-confirm-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+  <div class="admin-confirm-card">
+    <div class="admin-confirm-icon" id="confirmIcon">🗑️</div>
+    <h3 class="admin-confirm-title" id="confirmTitle">Hapus Data</h3>
+    <p class="admin-confirm-msg" id="confirmMsg">Apakah kamu yakin ingin menghapus data ini?</p>
+    <div class="admin-confirm-btns">
+      <button class="btn-secondary" id="confirmCancelBtn">Batal</button>
+      <button class="admin-btn-danger-solid" id="confirmOkBtn">Ya, Hapus</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== DETAIL MODAL ====================== -->
+<div id="detailModal" class="admin-confirm-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
+  <div class="admin-confirm-card admin-detail-card">
+    <div class="admin-detail-header">
+      <h3 class="admin-confirm-title" id="detailModalTitle">Detail Log Curhat</h3>
+      <button class="admin-detail-close" id="detailCloseBtn" aria-label="Tutup">&#x2715;</button>
+    </div>
+    <div id="detailModalBody" class="admin-detail-body"></div>
+  </div>
+</div>
+
+<!-- ====================== CHAT DETAIL MODAL ====================== -->
+<div id="chatModal" class="admin-confirm-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="chatModalTitle">
+  <div class="admin-confirm-card admin-detail-card admin-chat-card">
+    <div class="admin-detail-header">
+      <h3 class="admin-confirm-title" id="chatModalTitle">Detail Percakapan</h3>
+      <button class="admin-detail-close" id="chatModalCloseBtn" aria-label="Tutup">&#x2715;</button>
+    </div>
+    <div id="chatModalBody" class="admin-detail-body"></div>
+  </div>
+</div>
+
+<!-- ====================== TOAST ====================== -->
+<div class="toast-container" id="adminToastContainer" role="alert" aria-live="polite"></div>
+
+<script src="js/admin.js"></script>
+<script src="js/admin-chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "jedalog-chat-server",
+  "version": "1.0.0",
+  "description": "Backend Chat AI untuk JedaLog (tanpa dependensi)",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
