@@ -41,6 +41,8 @@ const Router = {
   },
 
   navigate(page, updateHash = true) {
+    // Link lama #curhat sekarang langsung ke Chat AI
+    if (page === 'curhat') page = 'chat';
     // Hide all pages
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
 
@@ -80,7 +82,6 @@ const Router = {
   initPage(page) {
     if (page === 'bantuan') initFAQ();
     if (page === 'kontak') initContactForm();
-    if (page === 'curhat') initCurhat();
     if (page === 'refleksi') initRefleksi();
     if (page === 'chat' && typeof initChat === 'function') initChat();
   }
@@ -232,290 +233,46 @@ function handleContactSubmit(e) {
 }
 
 // ---- AUTH ----
-// Catatan: akun & sesi disimpan di localStorage browser (sama seperti data
-// curhat dan pesan kontak). Ini cocok untuk prototipe; untuk produksi,
-// ganti fungsi authRegister/authLogin dengan panggilan ke backend.
-const AUTH_USERS_KEY = 'jedalog-users';
-const AUTH_SESSION_KEY = 'jedalog-session';
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function authRead(key, fallback) {
-  try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch (e) { return fallback; }
-}
-
-function getSession() {
-  return authRead(AUTH_SESSION_KEY, null);
-}
-
-async function authHash(text) {
-  if (window.crypto && crypto.subtle) {
-    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
-    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-  }
-  return btoa(unescape(encodeURIComponent(text))); // fallback (konteks non-HTTPS)
-}
-
-function setFieldError(input, errorEl, show) {
-  if (input) input.classList.toggle('error', show);
-  if (errorEl) errorEl.classList.toggle('show', show);
-}
-
-// Tombol "Masuk" di navbar berubah menjadi "Keluar" setelah login
-function updateAuthUI() {
-  const session = getSession();
-  document.querySelectorAll('[data-auth-btn]').forEach(btn => {
-    btn.textContent = session ? 'Keluar' : 'Masuk';
-    btn.classList.toggle('is-logged-in', !!session);
-    btn.setAttribute('href', session ? '#beranda' : '#login');
-    if (session) btn.title = 'Masuk sebagai ' + session.email;
-    else btn.removeAttribute('title');
-  });
-}
-
-function logout() {
-  localStorage.removeItem(AUTH_SESSION_KEY);
-  updateAuthUI();
-  showToast('Kamu sudah keluar. Sampai jumpa lagi!', 'info');
-  Router.navigate('beranda');
-}
-
 function initAuth() {
-  // Tombol Masuk/Keluar di navbar (desktop & mobile)
-  document.querySelectorAll('[data-auth-btn]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (getSession()) logout();
-      else Router.navigate('login');
-    });
-  });
-
-  // Lihat / sembunyikan password
-  const toggle = document.getElementById('loginPassToggle');
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      const input = document.getElementById('loginPass');
-      const show = input.type === 'password';
-      input.type = show ? 'text' : 'password';
-      toggle.textContent = show ? '🙈' : '👁';
-      toggle.setAttribute('aria-label', show ? 'Sembunyikan password' : 'Tampilkan password');
-    });
-  }
-
   // Login form
   const loginForm = document.getElementById('loginForm');
   if (loginForm) {
-    const emailInput = loginForm.querySelector('#loginEmail');
-    const passInput = loginForm.querySelector('#loginPass');
-    const emailError = loginForm.querySelector('#loginEmailError');
-    const passError = loginForm.querySelector('#loginPassError');
-
-    [emailInput, passInput].forEach(inp => inp.addEventListener('input', () => {
-      setFieldError(emailInput, emailError, false);
-      setFieldError(passInput, passError, false);
-    }));
-
-    loginForm.addEventListener('submit', async (e) => {
+    loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const email = emailInput.value.trim().toLowerCase();
-
-      const emailOk = EMAIL_REGEX.test(email);
-      const passOk = passInput.value.length > 0;
-      setFieldError(emailInput, emailError, !emailOk);
-      setFieldError(passInput, passError, !passOk);
-      if (!emailOk || !passOk) {
-        showToast('Mohon periksa email dan password kamu.', 'error');
-        return;
-      }
-
       const btn = loginForm.querySelector('[type="submit"]');
       btn.disabled = true;
       btn.textContent = 'Masuk...';
-
-      const hash = await authHash(passInput.value);
-      const user = authRead(AUTH_USERS_KEY, []).find(u => u.email === email);
-
-      btn.disabled = false;
-      btn.textContent = 'Masuk →';
-
-      if (!user || user.hash !== hash) {
-        passError.textContent = 'Email atau password salah.';
-        setFieldError(passInput, passError, true);
-        showToast('Email atau password salah.', 'error');
-        return;
-      }
-
-      passError.textContent = 'Password tidak boleh kosong.';
-      localStorage.setItem(AUTH_SESSION_KEY, JSON.stringify({ email: user.email, at: Date.now() }));
-      loginForm.reset();
-      updateAuthUI();
-      showToast('Login berhasil! Selamat datang di JedaLog.', 'success');
-      Router.navigate('curhat');
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = 'Masuk →';
+        showToast('Login berhasil! Selamat datang di JedaLog.', 'success');
+        Router.navigate('chat');
+      }, 1200);
     });
   }
 
   // Register form
   const regForm = document.getElementById('registerForm');
   if (regForm) {
-    const rEmail = regForm.querySelector('#regEmail');
-    const rPass = regForm.querySelector('#regPass');
-    const rConfirm = regForm.querySelector('#regConfirm');
-    const eEmail = regForm.querySelector('#regEmailError');
-    const ePass = regForm.querySelector('#regPassError');
-    const eConfirm = regForm.querySelector('#regConfirmError');
-
-    regForm.addEventListener('submit', async (e) => {
+    regForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const email = rEmail.value.trim().toLowerCase();
-      const users = authRead(AUTH_USERS_KEY, []);
-
-      const emailOk = EMAIL_REGEX.test(email);
-      const passOk = rPass.value.length >= 8;
-      const confirmOk = rPass.value === rConfirm.value;
-      const taken = emailOk && users.some(u => u.email === email);
-
-      eEmail.textContent = taken ? 'Email ini sudah terdaftar. Silakan masuk.' : 'Masukkan alamat email yang valid.';
-      setFieldError(rEmail, eEmail, !emailOk || taken);
-      setFieldError(rPass, ePass, !passOk);
-      setFieldError(rConfirm, eConfirm, !confirmOk);
-
-      if (!emailOk || taken || !passOk || !confirmOk) {
-        showToast(!confirmOk && passOk ? 'Password tidak cocok. Periksa kembali.' : 'Mohon perbaiki field yang ditandai.', 'error');
+      const passInput = regForm.querySelector('#regPass');
+      const confirmInput = regForm.querySelector('#regConfirm');
+      if (passInput.value !== confirmInput.value) {
+        showToast('Password tidak cocok. Periksa kembali.', 'error');
         return;
       }
-
       const btn = regForm.querySelector('[type="submit"]');
       btn.disabled = true;
       btn.textContent = 'Mendaftar...';
-
-      users.push({ email, hash: await authHash(rPass.value), createdAt: new Date().toISOString() });
-      localStorage.setItem(AUTH_USERS_KEY, JSON.stringify(users));
-      localStorage.setItem(AUTH_SESSION_KEY, JSON.stringify({ email, at: Date.now() }));
-
-      btn.disabled = false;
-      btn.textContent = 'Daftar Sekarang →';
-      regForm.reset();
-      updateAuthUI();
-      showToast('Akun berhasil dibuat! Kamu bisa mulai curhat sekarang.', 'success');
-      Router.navigate('curhat');
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = 'Daftar Sekarang →';
+        showToast('Akun berhasil dibuat! Kamu bisa mulai curhat sekarang.', 'success');
+        Router.navigate('chat');
+      }, 1500);
     });
   }
-
-  updateAuthUI();
-}
-
-// ---- CURHAT FORM ----
-let curhatStep = 1;
-const totalCurhatSteps = 3;
-
-function initCurhat() {
-  curhatStep = 1;
-  updateCurhatStep();
-
-  // Mood buttons
-  document.querySelectorAll('.mood-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-    });
-  });
-
-  // Topic chips
-  document.querySelectorAll('.topic-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      chip.classList.toggle('selected');
-    });
-  });
-
-  // Char counter
-  const textarea = document.getElementById('curhatText');
-  const counter = document.getElementById('charCounter');
-  if (textarea && counter) {
-    textarea.addEventListener('input', () => {
-      counter.textContent = `${textarea.value.length}/500`;
-    });
-  }
-}
-
-function updateCurhatStep() {
-  // Update dots
-  document.querySelectorAll('.step-dot').forEach((dot, i) => {
-    dot.classList.toggle('active', i < curhatStep);
-  });
-
-  // Update progress
-  const fill = document.getElementById('curhatProgress');
-  if (fill) fill.style.width = `${(curhatStep / totalCurhatSteps) * 100}%`;
-
-  // Show/hide steps
-  document.querySelectorAll('.curhat-step').forEach((step, i) => {
-    step.style.display = i + 1 === curhatStep ? 'block' : 'none';
-  });
-
-  // Update step number text
-  const stepText = document.getElementById('curhatStepText');
-  if (stepText) stepText.textContent = `Langkah ${curhatStep} dari ${totalCurhatSteps}`;
-}
-
-function nextCurhatStep() {
-  if (curhatStep === 1) {
-    const mood = document.querySelector('.mood-btn.selected');
-    if (!mood) {
-      showToast('Pilih satu perasaan terlebih dahulu.', 'error');
-      return;
-    }
-  }
-  if (curhatStep === 2) {
-    const text = document.getElementById('curhatText').value.trim();
-    if (text.length < 20) {
-      showToast('Ceritakan minimal 20 karakter ya.', 'error');
-      return;
-    }
-  }
-  if (curhatStep < totalCurhatSteps) {
-    curhatStep++;
-    updateCurhatStep();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-}
-
-function prevCurhatStep() {
-  if (curhatStep > 1) {
-    curhatStep--;
-    updateCurhatStep();
-  }
-}
-
-function submitCurhat() {
-  const btn = document.getElementById('submitCurhat');
-  if (btn) {
-    btn.disabled = true;
-    btn.textContent = 'Mengirim...';
-  }
-
-  // Collect data from form
-  const selectedMood = document.querySelector('.mood-btn.selected');
-  const moodText = selectedMood
-    ? selectedMood.querySelector('.mood-emoji')?.textContent + ' ' + (selectedMood.querySelector('span:last-child')?.textContent || '')
-    : 'Tidak Dipilih';
-
-  const selectedTopics = Array.from(document.querySelectorAll('.topic-chip.selected'))
-    .map(chip => chip.textContent.trim());
-
-  const curhatText = (document.getElementById('curhatText')?.value || '').trim();
-
-  // Save to localStorage
-  saveCurhatLog({
-    id: generateLogId(),
-    timestamp: new Date().toISOString(),
-    mood: moodText.trim(),
-    topics: selectedTopics,
-    text: curhatText,
-  });
-
-  setTimeout(() => {
-    showToast('Curhatanmu berhasil terkirim! 💙 Kamu sudah berani berbagi.', 'success');
-    Router.navigate('refleksi');
-  }, 1500);
 }
 
 // ---- REFLEKSI ----
